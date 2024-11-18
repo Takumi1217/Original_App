@@ -20,9 +20,9 @@ class StaticPagesController < ApplicationController
   def bookmark
   end
 
-  def notice
+  def history
   end
 
-  def history
+  def notice
   end
 end

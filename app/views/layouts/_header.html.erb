@@ -1,0 +1,17 @@
+<header class="navbar navbar-fixed-top navbar-inverse">
+  <div class="container">
+    <%= link_to "Original App Header", root_path, id: "logo" %>
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "EN", '#' %></li>
+        <li><%= link_to "ログイン／登録", '#' %></li>
+      </ul>
+      <ul class="nav navbar-nav navbar-left">
+        <li><%= link_to "検索", search_path %></li>
+        <li><%= link_to "ブックマーク", bookmark_path %></li>
+        <li><%= link_to "閲覧履歴", history_path %></li>
+        <li><%= link_to "お知らせ", notice_path %></li>
+      </ul>
+    </nav>
+  </div>
+</header>
