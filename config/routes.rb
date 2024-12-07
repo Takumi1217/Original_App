@@ -18,4 +18,6 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
+  resources :events
+  get  "/my_events", to: "events#my_events"
 end

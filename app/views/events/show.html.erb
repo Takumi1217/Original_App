@@ -1,0 +1,59 @@
+<div>
+  <strong>タイトル:</strong>
+  <%= @event.title %>
+</div>
+
+<div>
+  <strong>キャッチコピー:</strong>
+  <%= @event.catchphrase %>
+</div>
+
+<div>
+  <strong>本文:</strong>
+  <%= @event.body %>
+</div>
+
+<div>
+  <strong>開始日時:</strong>
+  <%= @event.start_date.strftime("%Y-%m-%d %H:%M") if @event.start_date %>
+</div>
+
+<div>
+  <strong>終了日時:</strong>
+  <%= @event.end_date.strftime("%Y-%m-%d %H:%M") if @event.end_date %>
+</div>
+
+<div>
+  <strong>地域:</strong>
+  <%= @event.area %>
+</div>
+
+<div>
+  <strong>開催場所:</strong>
+  <%= @event.place %>
+</div>
+
+<div>
+  <strong>最寄駅:</strong>
+  <%= @event.station %>
+</div>
+
+<div>
+  <strong>カテゴリ:</strong>
+  <%= @event.category %>
+</div>
+
+<div>
+  <strong>連絡先:</strong>
+  <%= @event.contact %>
+</div>
+
+<div>
+  <strong>費用:</strong>
+  <%= @event.cost %>
+</div>
+
+<div>
+  <strong>リンク:</strong>
+  <%= link_to @event.link, @event.link, target: "_blank" if @event.link.present? %>
+</div>

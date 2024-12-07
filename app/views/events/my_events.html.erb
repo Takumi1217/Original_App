@@ -1,0 +1,20 @@
+<h1>自分のイベント</h1>
+
+<% if @events.any? %>
+  <% @events.each do |event| %>
+    <tr>
+      <td>
+        <%= link_to event.title, event_path(event) %>
+      </td>
+      <td>
+        <%= link_to "編集", edit_event_path(event), class: "btn btn-warning" %>
+      </td>
+      <td>
+        <%= button_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
+      </td>
+    </tr>
+  <% end %>
+  <% else %>
+  <p>まだイベントを投稿していません。</p>
+  <%= link_to "新しいイベントを投稿する", new_event_path, class: "btn btn-primary" %>
+<% end %>

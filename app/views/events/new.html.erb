@@ -1,0 +1,79 @@
+<h1>新規投稿</h1>
+
+<%= form_with(model: @event, local: true) do |form| %>
+  <% if @event.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <ul>
+        <% @event.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div>
+    <%= form.label :title, "タイトル" %><br>
+    <%= form.text_field :title %>
+  </div>
+
+  <div>
+    <%= form.label :catchphrase, "キャッチコピー" %><br>
+    <%= form.text_field :catchphrase %>
+  </div>
+
+  <div>
+    <%= form.label :body, "本文" %><br>
+    <%= form.text_area :body %>
+  </div>
+
+  <div>
+    <%= form.label :start_date, "開始日時" %><br>
+    <%= form.datetime_select :start_date %>
+  </div>
+
+  <div>
+    <%= form.label :end_date, "終了日時" %><br>
+    <%= form.datetime_select :end_date %>
+  </div>
+
+  <div>
+    <%= form.label :area, "地域" %><br>
+    <%= form.text_field :area %>
+  </div>
+
+  <div>
+    <%= form.label :place, "開催場所" %><br>
+    <%= form.text_field :place %>
+  </div>
+
+  <div>
+    <%= form.label :station, "最寄駅" %><br>
+    <%= form.text_field :station %>
+  </div>
+
+  <div>
+    <%= form.label :category, "カテゴリ" %><br>
+    <%= form.text_field :category %>
+  </div>
+
+  <div>
+    <%= form.label :contact, "連絡先" %><br>
+    <%= form.text_field :contact %>
+  </div>
+
+  <div>
+    <%= form.label :cost, "費用" %><br>
+    <%= form.text_field :cost %>
+  </div>
+
+  <div>
+    <%= form.label :link, "リンク" %><br>
+    <%= form.url_field :link %>
+  </div>
+
+  <div>
+    <%= form.submit "投稿する" %>
+  </div>
+
+<% end %>
