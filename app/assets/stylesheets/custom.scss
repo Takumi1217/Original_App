@@ -1,0 +1,16 @@
+@import "bootstrap-sprockets";
+@import "bootstrap";
+
+/* universal */
+
+/* typography */
+
+/* header */
+
+.navbar {
+  background-color: transparent; // 背景を透明に設定
+  border: none; // 境界線を非表示に
+  box-shadow: none; // 影を非表示に
+}
+
+/* footer */
