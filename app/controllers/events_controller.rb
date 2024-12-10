@@ -5,6 +5,12 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
+  # イベント検索&表示欄
+  def index
+    @q = Event.ransack(params[:q])
+    @events = @q.result(distinct: true).order(created_at: :desc)
+  end
+
   # イベントの詳細を表示
   def show
     # @eventはset_eventで取得済み

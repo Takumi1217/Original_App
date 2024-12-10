@@ -16,6 +16,30 @@ class Event < ApplicationRecord
   validates :contact, format: { with: /\A\d{10,11}\z/, message: "は10〜11桁の数字で入力してください" }, allow_blank: true # 電話番号のフォーマット
   validates :cost, presence: true, numericality: { greater_than_or_equal_to: 0 }, allow_blank: true # 必須かつ料金は0以上の数値
   validates :link, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: "は有効なURLを入力してください" }, allow_blank: true # URLのフォーマット
+
+  # 全てのカラムをransackで検索可能にする
+  def self.ransackable_attributes(auth_object = nil)
+    column_names # Eventモデルの全てのカラムを取得して返す
+  end
+
+  # Ransackで検索可能な関連を指定
+  def self.ransackable_associations(auth_object = nil)
+    ["user"]
+  end
+
+  # 必要に応じてRansack用スコープを追加
+  def self.ransackable_scopes(auth_object = nil)
+    [:combined_search]
+  end
+
+  # 検索スコープ
+  def self.combined_search(query)
+    where(
+      "title LIKE :query OR catchphrase LIKE :query OR body LIKE :query OR start_date LIKE :query OR end_date LIKE :query OR area LIKE :query OR place LIKE :query OR station LIKE :query OR category LIKE :query OR contact LIKE :query OR cost LIKE :query OR link LIKE :query",
+      query: "%#{query}%"
+    )
+  end
+  
 end
 
 # カスタムバリデーション

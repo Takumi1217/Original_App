@@ -19,4 +19,5 @@ Rails.application.routes.draw do
   resources :password_resets,     only: [:new, :create, :edit, :update]
   resources :events
   get  "/my_events", to: "events#my_events"
+  get  "/search", to: "events#index"
 end

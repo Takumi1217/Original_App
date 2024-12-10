@@ -1,1 +1,27 @@
-<h1>index</h1>
+<h1>新着イベント</h1>
+
+<%= search_form_for @q, url: events_path, method: :get do |f| %>
+  <div>
+    <%= f.label :combined_search, "検索" %>
+    <%= f.text_field :combined_search, placeholder: "キーワードで検索" %>
+    <%= f.submit "検索", class: "btn btn-primary" %>
+  </div>
+<% end %>
+
+<% if @events.any? %>
+  <ul>
+    <% @events.each do |event| %>
+      <li>
+        <h2><%= link_to event.title, event_path(event) %></h2>
+        <p><strong>エリア:</strong> <%= event.area %></p>
+        <p><strong>キャッチフレーズ:</strong> <%= event.catchphrase %></p>
+        <p><strong>最寄り駅:</strong> <%= event.station %></p>
+        <p><strong>場所:</strong> <%= event.place %></p>
+        <p><strong>カテゴリ:</strong> <%= event.category %></p>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+<% else %>
+  <p>該当するイベントは見つかりませんでした。</p>
+<% end %>
