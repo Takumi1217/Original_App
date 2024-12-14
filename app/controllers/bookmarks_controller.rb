@@ -12,14 +12,20 @@ class BookmarksController < ApplicationController
     else
       flash[:danger] = "ブックマークに失敗しました。"
     end
-    redirect_to events_path # リダイレクト先をevents#indexに設定
+    redirect_to events_path # リダイレクト先はevents#index
   end
 
   def destroy
     @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.destroy
     flash[:success] = "ブックマークを解除しました。"
-    redirect_to events_path # リダイレクト先をevents#indexに設定
+
+    # リダイレクト先を判別
+    if request.referer.include?('bookmarks')
+      redirect_to bookmarks_path # ブックマークページに戻る
+    else
+      redirect_to events_path # イベントページに戻る
+    end
   end
 
   private

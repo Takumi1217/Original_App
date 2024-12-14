@@ -5,6 +5,9 @@
     <% @bookmarked_events.each do |event| %>
       <li>
         <h2><%= link_to event.title, event_path(event) %></h2>
+
+        <!-- ブックマーク解除ボタン -->
+        <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-danger" %>
       </li>
       <hr>
     <% end %>
