@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   root "static_pages#home"
-  get  "/bookmark", to: "static_pages#bookmark"
   get  "/history", to: "static_pages#history"
   get  "/notice", to: "static_pages#notice"
   get  "/agreement", to: "static_pages#agreement"
@@ -20,4 +19,6 @@ Rails.application.routes.draw do
   resources :events
   get  "/my_events", to: "events#my_events"
   get  "/search", to: "events#index"
+  resources :bookmarks, only: [:index, :create, :destroy]
+  get "/my_bookmarks", to: "bookmarks#index"
 end

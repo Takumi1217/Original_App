@@ -18,6 +18,13 @@
         <p><strong>最寄り駅:</strong> <%= event.station %></p>
         <p><strong>場所:</strong> <%= event.place %></p>
         <p><strong>カテゴリ:</strong> <%= event.category %></p>
+
+        <!-- ブックマークボタン -->
+        <% if current_user.bookmarks.exists?(event: event) %>
+          <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-danger" %>
+        <% else %>
+          <%= button_to "ブックマーク", bookmarks_path(event_id: event.id), method: :post, class: "btn btn-primary" %>
+        <% end %>
       </li>
       <hr>
     <% end %>

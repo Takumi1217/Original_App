@@ -1,0 +1,14 @@
+<h1>ブックマーク</h1>
+
+<% if @bookmarked_events.any? %>
+  <ul>
+    <% @bookmarked_events.each do |event| %>
+      <li>
+        <h2><%= link_to event.title, event_path(event) %></h2>
+      </li>
+      <hr>
+    <% end %>
+  </ul>
+<% else %>
+  <p>ブックマークしたイベントはありません。</p>
+<% end %>

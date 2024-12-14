@@ -1,7 +1,9 @@
 class Event < ApplicationRecord
   belongs_to :user
   default_scope -> { order(created_at: :desc) }
-  
+  has_many :bookmarks, dependent: :destroy
+  has_many :bookmarked_by_users, through: :bookmarks, source: :user
+
   # バリデーション
   validates :user_id, presence: true
   validates :title, presence: true, length: { maximum: 30 } # 必須かつ最大30文字

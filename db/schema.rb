@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_12_03_053450) do
+ActiveRecord::Schema[7.0].define(version: 2024_12_14_021112) do
+  create_table "bookmarks", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "event_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["event_id"], name: "index_bookmarks_on_event_id"
+    t.index ["user_id"], name: "index_bookmarks_on_user_id"
+  end
+
   create_table "events", force: :cascade do |t|
     t.string "title"
     t.string "catchphrase"
@@ -47,5 +56,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_12_03_053450) do
     t.index ["email"], name: "index_users_on_email", unique: true
   end
 
+  add_foreign_key "bookmarks", "events"
+  add_foreign_key "bookmarks", "users"
   add_foreign_key "events", "users"
 end
