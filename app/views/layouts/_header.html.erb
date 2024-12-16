@@ -2,7 +2,7 @@
   <div class="container">
     <%= link_to "Original App", root_path, id: "logo" %>
     <nav>
-      <ul class="nav navbar-nav navbar-left">
+      <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "EN", '#' %></li>
         <% if logged_in? %>
           <li><%= link_to "通知", '#' %></li>
@@ -25,11 +25,9 @@
         <% else %>
           <li><%= link_to "ログイン／登録", login_path %></li>
         <% end %>
-      </ul>
-      <ul class="nav navbar-nav navbar-right">
-          <li><%= link_to "検索", search_path %></li>
-          <li><%= link_to "閲覧履歴", history_path %></li>
-          <li><%= link_to "お知らせ", notice_path %></li>
+        <li><%= link_to "検索", search_path %></li>
+        <li><%= link_to "閲覧履歴", history_path %></li>
+        <li><%= link_to "お知らせ", notice_path %></li>
       </ul>
     </nav>
   </div>
