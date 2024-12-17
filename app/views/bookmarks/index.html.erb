@@ -4,6 +4,12 @@
   <ul>
     <% @bookmarked_events.each do |event| %>
       <li>
+        <!-- サムネイル画像を表示 -->
+        <% if event.thumbnail.present? %>
+          <%= image_tag event.thumbnail, alt: "Thumbnail", class: "img-thumbnail", width: 100, height: 100 %>
+        <% end %>
+        <br>
+        <!-- イベントタイトル -->
         <h2><%= link_to event.title, event_path(event) %></h2>
 
         <!-- ブックマーク解除ボタン -->

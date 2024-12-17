@@ -23,6 +23,16 @@
   </div>
 
   <div>
+    <%= form.label :thumbnail, "サムネイル画像" %><br>
+    <%= form.file_field :thumbnail, direct_upload: true %>
+  </div>
+
+  <div>
+    <%= form.label :images, "追加画像 (最大2枚)" %><br>
+    <%= form.file_field :images, multiple: true, direct_upload: true %>
+  </div>
+
+  <div>
     <%= form.label :body, "本文" %><br>
     <%= form.text_area :body %>
   </div>

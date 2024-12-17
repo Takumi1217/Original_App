@@ -4,6 +4,12 @@
   <% @events.each do |event| %>
     <tr>
       <td>
+        <!-- サムネイル画像 -->
+        <% if event.thumbnail.present? %>
+          <%= image_tag event.thumbnail, alt: "Thumbnail", class: "img-thumbnail", width: 100, height: 100 %>
+        <% end %>
+        <br>
+        <!-- イベントタイトル -->
         <%= link_to event.title, event_path(event) %>
       </td>
       <td>
@@ -14,7 +20,7 @@
       </td>
     </tr>
   <% end %>
-  <% else %>
+<% else %>
   <p>まだイベントを投稿していません。</p>
   <%= link_to "新しいイベントを投稿する", new_event_path, class: "btn btn-primary" %>
 <% end %>

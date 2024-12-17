@@ -9,9 +9,20 @@
 <% end %>
 
 <% if @events.any? %>
-  <ul>
+  <ul class="event-list">
     <% @events.each do |event| %>
-      <li>
+      <li class="event-item">
+      
+        <% if event.thumbnail.attached? %>
+          <div class="thumbnail-container">
+            <%= image_tag event.thumbnail, alt: "#{event.title} Thumbnail" %>
+          </div>
+        <% else %>
+          <div class="thumbnail-placeholder">
+            No Thumbnail Available
+          </div>
+        <% end %>
+
         <h2><%= link_to event.title, event_path(event) %></h2>
         <p><strong>エリア:</strong> <%= event.area %></p>
         <p><strong>キャッチフレーズ:</strong> <%= event.catchphrase %></p>
@@ -19,7 +30,6 @@
         <p><strong>場所:</strong> <%= event.place %></p>
         <p><strong>カテゴリ:</strong> <%= event.category %></p>
 
-        <!-- ブックマークボタン -->
         <% if current_user.bookmarks.exists?(event: event) %>
           <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-danger" %>
         <% else %>
