@@ -30,10 +30,12 @@
         <p><strong>場所:</strong> <%= event.place %></p>
         <p><strong>カテゴリ:</strong> <%= event.category %></p>
 
-        <% if current_user.bookmarks.exists?(event: event) %>
-          <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-danger" %>
-        <% else %>
-          <%= button_to "ブックマーク", bookmarks_path(event_id: event.id), method: :post, class: "btn btn-primary" %>
+        <% if current_user %>
+          <% if current_user.bookmarks.exists?(event: event) %>
+            <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-danger" %>
+          <% else %>
+            <%= button_to "ブックマーク", bookmarks_path(event_id: event.id), method: :post, class: "btn btn-primary" %>
+          <% end %>
         <% end %>
       </li>
       <hr>

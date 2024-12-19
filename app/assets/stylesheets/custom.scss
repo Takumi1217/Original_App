@@ -16,21 +16,115 @@ textarea {
   resize: vertical;
 }
 
-/* header */
-
-.navbar {
-  background-color: transparent; // 背景を透明に設定
-  border: none; // 境界線を非表示に
-  box-shadow: none; // 影を非表示に
+.centered-title {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 20px;
+  color: #333;
 }
 
-/* Dropdown menu */
+/* ユーザー認証 */
+
+.row {
+  margin-bottom: 80px;
+}
+
+.gravatar_edit {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 20px;
+
+  img {
+    border-radius: 50%;
+  }
+
+  a {
+    margin-left: 100px;
+    padding: 10px 20px;
+    background-color: #4FB4D8;
+    color: white;
+    text-decoration: none;
+    border-radius: 50px;
+    transition: background-color 0.3s;
+  }
+
+  a:hover {
+    background-color: #3A9BB8;
+  }
+}
+
+/* ボタン */
+
+.btn-primary {
+  background-color: #4FB4D8;
+  border: none;
+  border-radius: 50px;
+  color: #fff;
+  padding: 10px 20px;
+  font-size: 14px;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.btn-primary:hover {
+  background-color: #3A9BB8;
+}
+
+.center-button {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.form-control {
+  margin-bottom: 20px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  padding: 10px;
+  font-size: 16px;
+}
+
+a {
+  color: #4FB4D8;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* チェックボックス */
+
+.checkbox {
+  margin-top: -10px;
+  margin-bottom: 10px;
+  span {
+    margin-left: 20px;
+    font-weight: normal;
+  }
+}
+
+#session_remember_me {
+  width: auto;
+  margin-left: 0;
+}
+
+/* ヘッダー */
+
+.navbar {
+  background-color: transparent;
+  border: none;
+  box-shadow: none;
+}
+
+/* ドロップダウンメニュー */
 
 .dropdown-menu.active {
   display: block;
 }
 
-/* footer */
+/* フッター */
 
 .footer {
   background-color: #425666;
@@ -70,11 +164,11 @@ textarea {
   }
 }
 
-/* events/index */
+/* サムネイル */
 
 .thumbnail-container {
-  width: 300px; /* 固定幅 */
-  height: 200px; /* 幅の3:2比率 */
+  width: 300px;
+  height: 200px;
   overflow: hidden;
   position: relative;
 }
@@ -82,8 +176,8 @@ textarea {
 .thumbnail-container img {
   width: 100%;
   height: 100%;
-  object-fit: cover; /* 画像を比率を保ったままコンテナにフィットさせる */
-  object-position: center; /* 中央揃え */
+  object-fit: cover;
+  object-position: center;
 }
 
 .thumbnail-placeholder {
