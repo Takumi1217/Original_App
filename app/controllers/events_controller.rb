@@ -5,18 +5,15 @@ class EventsController < ApplicationController
     @event = Event.new
   end
 
-  # イベント検索&表示欄
   def index
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true).order(created_at: :desc)
+    @events = @q.result(distinct: true).order(created_at: :desc).paginate(page: params[:page], per_page: 30)
   end
-
-  # イベントの詳細を表示
+  
   def show
     # @eventはset_eventで取得済み
   end
 
-  # 自分のイベント一覧を表示
   def my_events
     @events = current_user.events.order(created_at: :desc)
   end
@@ -52,11 +49,10 @@ class EventsController < ApplicationController
   private
 
   def set_event
-    @event = current_user.events.find(params[:id]) # 自分のイベントのみ操作可能
+    @event = Event.find(params[:id]) # ログインしていなくても全てのイベントが閲覧できるように
   end
 
   def event_params
     params.require(:event).permit(:title, :catchphrase, :body, :start_date, :end_date, :area, :place, :station, :category, :contact, :cost, :link, :thumbnail, images: [])
   end  
-  
 end

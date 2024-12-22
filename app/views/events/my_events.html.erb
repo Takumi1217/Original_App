@@ -1,26 +1,33 @@
 <h1 class="centered-title">自分のイベント</h1>
 
 <% if @events.any? %>
-  <% @events.each do |event| %>
-    <tr>
-      <td>
-        <!-- サムネイル画像 -->
-        <% if event.thumbnail.present? %>
-          <%= image_tag event.thumbnail, alt: "Thumbnail", class: "img-thumbnail", width: 100, height: 100 %>
-        <% end %>
-        <br>
-        <!-- イベントタイトル -->
-        <%= link_to event.title, event_path(event) %>
-      </td>
-      <td>
-        <%= link_to "編集", edit_event_path(event), class: "btn btn-warning" %>
-      </td>
-      <td>
-        <%= button_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-danger" %>
-      </td>
-    </tr>
-  <% end %>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card">
+          <div class="thumbnail-container">
+            <% if event.thumbnail.present? %>
+              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+            <% else %>
+              <div class="thumbnail-placeholder">No Image Available</div>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between align-items-center">
+              <%= link_to event.title, event_path(event) %>
+              <div>
+                <%= link_to "編集", edit_event_path(event), class: "btn btn-sm btn-warning" %>
+                <%= button_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+              </div>
+            </h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <p>まだイベントを投稿していません。</p>
-  <%= link_to "新しいイベントを投稿する", new_event_path, class: "btn btn-primary" %>
+  <div class="center-button">
+    <%= link_to "新しいイベントを投稿する", new_event_path, class: "btn btn-primary" %>
+  </div>
 <% end %>

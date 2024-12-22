@@ -1,59 +1,38 @@
-<div>
-  <strong>タイトル:</strong>
-  <%= @event.title %>
+<h1><%= @event.title %></h1>
+
+<div class="event-details">
+  <p><strong>開始日:</strong> <%= @event.start_date %></p>
+  <p><strong>場所:</strong> <%= @event.place %></p>
+  <p><strong>最寄駅:</strong> <%= @event.station %></p>
+  <p><strong>エリア:</strong> <%= @event.area %></p>
+  <p><strong>カテゴリ:</strong> <%= @event.category %></p>
 </div>
 
-<div>
-  <strong>キャッチコピー:</strong>
-  <%= @event.catchphrase %>
+<h2>基本情報</h2>
+<div class="event-info">
+  <p><strong>サムネイル:</strong></p>
+  <%= image_tag @event.thumbnail.url if @event.thumbnail.present? %>
+  <p><strong>画像1:</strong></p>
+  <%= image_tag @event.image_1.url if @event.image_1.present? %>
+  <p><strong>画像2:</strong></p>
+  <%= image_tag @event.image_2.url if @event.image_2.present? %>
 </div>
 
-<div>
-  <strong>本文:</strong>
-  <%= @event.body %>
+<p><strong><%= @event.catchphrase %></strong></p>
+
+<div class="event-body">
+  <p><%= @event.body %></p>
 </div>
 
-<div>
-  <strong>開始日時:</strong>
-  <%= @event.start_date.strftime("%Y-%m-%d %H:%M") if @event.start_date %>
+<h2>追加情報</h2>
+<div class="event-extra-details">
+  <p><strong>場所:</strong> <%= @event.place %></p>
+  <p><strong>最寄り駅:</strong> <%= @event.station %></p>
+  <p><strong>エリア:</strong> <%= @event.area %></p>
+  <p><strong>開始日:</strong> <%= @event.start_date %></p>
+  <p><strong>終了日:</strong> <%= @event.end_date %></p>
+  <p><strong>お問い合わせ:</strong> <%= @event.contact %></p>
+  <p><strong>リンク:</strong> <%= link_to @event.link, @event.link, target: '_blank' if @event.link.present? %></p>
 </div>
 
-<div>
-  <strong>終了日時:</strong>
-  <%= @event.end_date.strftime("%Y-%m-%d %H:%M") if @event.end_date %>
-</div>
-
-<div>
-  <strong>地域:</strong>
-  <%= @event.area %>
-</div>
-
-<div>
-  <strong>開催場所:</strong>
-  <%= @event.place %>
-</div>
-
-<div>
-  <strong>最寄駅:</strong>
-  <%= @event.station %>
-</div>
-
-<div>
-  <strong>カテゴリ:</strong>
-  <%= @event.category %>
-</div>
-
-<div>
-  <strong>連絡先:</strong>
-  <%= @event.contact %>
-</div>
-
-<div>
-  <strong>費用:</strong>
-  <%= @event.cost %>
-</div>
-
-<div>
-  <strong>リンク:</strong>
-  <%= link_to @event.link, @event.link, target: "_blank" if @event.link.present? %>
-</div>
+<%= link_to '戻る', events_path, class: 'btn btn-secondary' %>

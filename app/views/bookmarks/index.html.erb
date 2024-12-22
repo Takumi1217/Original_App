@@ -1,23 +1,31 @@
 <h1 class="centered-title">ブックマーク</h1>
 
 <% if @bookmarked_events.any? %>
-  <ul>
+  <div class="row">
     <% @bookmarked_events.each do |event| %>
-      <li>
-        <!-- サムネイル画像を表示 -->
-        <% if event.thumbnail.present? %>
-          <%= image_tag event.thumbnail, alt: "Thumbnail", class: "img-thumbnail", width: 100, height: 100 %>
-        <% end %>
-        <br>
-        <!-- イベントタイトル -->
-        <h2><%= link_to event.title, event_path(event) %></h2>
-
-        <!-- ブックマーク解除ボタン -->
-        <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-danger" %>
-      </li>
-      <hr>
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card">
+          <div class="thumbnail-container">
+            <% if event.thumbnail.present? %>
+              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+            <% else %>
+              <div class="thumbnail-placeholder">No Image Available</div>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title d-flex justify-content-between align-items-center">
+              <%= link_to event.title, event_path(event) %>
+              <%= button_to "ブックマーク解除", bookmark_path(event.bookmarks.find_by(user_id: current_user.id)), 
+                             method: :delete, 
+                             data: { confirm: "本当にブックマークを解除しますか？" },
+                             class: "btn btn-sm btn-danger" %>
+            </h5>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </ul>
+  </div>
 <% else %>
-  <p>ブックマークしたイベントはありません。</p>
+  <p>まだイベントをブックマークしていません。</p>
+  <%= link_to "イベントを探す", events_path, class: "btn btn-primary" %>
 <% end %>

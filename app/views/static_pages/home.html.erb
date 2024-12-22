@@ -1,7 +1,48 @@
 <div class="center jumbotron">
   <h2>ピックアップ</h2>
+  <div class="row">
+    <% @events.each do |event| %>
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card">
+          <div class="thumbnail-container">
+            <% if event.thumbnail.present? %>
+              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+            <% else %>
+              <div class="thumbnail-placeholder">No Image Available</div>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
 
   <h2>人気のイベント</h2>
+  <div class="row">
+    <% @popular_events.each do |event| %>
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card">
+          <div class="thumbnail-container">
+            <% if event.thumbnail.present? %>
+              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+            <% else %>
+              <div class="thumbnail-placeholder">No Image Available</div>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.catchphrase %></p>
+            <p class="card-text text-muted">
+            <%= pluralize(event.bookmarks.count, "Bookmark") %>
+            </p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
   <div class="center-button">
     <%= link_to 'もっと見る', search_path, class: 'btn btn-primary' %>
   </div>
@@ -9,6 +50,25 @@
   <h2>季節のおすすめ特集</h2>
 
   <h2>無料のイベント</h2>
+  <div class="row">
+    <% @free_events.each do |event| %>
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card">
+          <div class="thumbnail-container">
+            <% if event.thumbnail.present? %>
+              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+            <% else %>
+              <div class="thumbnail-placeholder">No Image Available</div>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title"><%= event.title %></h5>
+            <p class="card-text"><%= event.catchphrase %></p>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
   <div class="center-button">
     <%= link_to 'もっと見る', search_path, class: 'btn btn-primary' %>
   </div>

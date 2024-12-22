@@ -3,7 +3,7 @@
 <%= form_with(model: @event, local: true) do |form| %>
   <% if @event.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
+      <h2><%= pluralize(@event.errors.count, "error") %> 件のエラーが発生しました:</h2>
       <ul>
         <% @event.errors.full_messages.each do |message| %>
           <li><%= message %></li>
@@ -14,12 +14,12 @@
 
   <div>
     <%= form.label :title, "タイトル" %><br>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, placeholder: "（〜30字）" %>
   </div>
 
   <div>
     <%= form.label :catchphrase, "キャッチコピー" %><br>
-    <%= form.text_field :catchphrase %>
+    <%= form.text_field :catchphrase, placeholder: "（〜25字）" %>
   </div>
 
   <div>
@@ -34,7 +34,7 @@
 
   <div>
     <%= form.label :body, "本文" %><br>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, placeholder: "本文（10字〜10000字）" %>
   </div>
 
   <div>
@@ -49,37 +49,38 @@
 
   <div>
     <%= form.label :area, "地域" %><br>
-    <%= form.text_field :area %>
+    <%= form.select :area, [['渋谷', '渋谷'], ['原宿', '原宿'], ['青山', '青山'], ['広尾', '広尾'], ['松濤', '松濤'], ['池尻', '池尻'], ['恵比寿', '恵比寿'], ['代官山', '代官山'], ['中目黒', '中目黒'], ['表参道', '表参道']], { prompt: '選択してください' } %>
+
   </div>
 
   <div>
     <%= form.label :place, "開催場所" %><br>
-    <%= form.text_field :place %>
+    <%= form.text_field :place, placeholder: "入力してください" %>
   </div>
 
   <div>
     <%= form.label :station, "最寄駅" %><br>
-    <%= form.text_field :station %>
+    <%= form.text_field :station, placeholder: "入力してください" %>
   </div>
 
   <div>
     <%= form.label :category, "カテゴリ" %><br>
-    <%= form.text_field :category %>
+    <%= form.select :category, [['グルメ', 'グルメ'], ['ショッピング', 'ショッピング'], ['体験', '体験'], ['展覧会', '展覧会'], ['温泉', '温泉'], ['サブカルチャー', 'サブカルチャー'], ['観光・旅行', '観光・旅行']], { prompt: '選択してください' } %>
   </div>
 
   <div>
     <%= form.label :contact, "連絡先" %><br>
-    <%= form.text_field :contact %>
+    <%= form.text_field :contact, placeholder: "（任意）" %>
   </div>
 
   <div>
     <%= form.label :cost, "費用" %><br>
-    <%= form.text_field :cost %>
+    <%= form.text_field :cost, placeholder: "（半角数字）" %>
   </div>
 
   <div>
     <%= form.label :link, "リンク" %><br>
-    <%= form.url_field :link %>
+    <%= form.url_field :link, placeholder: "（任意）" %>
   </div>
 
   <div>
