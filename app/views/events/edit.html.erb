@@ -1,89 +1,103 @@
 <h1 class="centered-title">イベント編集</h1>
 
-<%= form_with(model: @event, local: true) do |form| %>
-  <% if @event.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@event.errors.count, "error") %> prohibited this event from being saved:</h2>
-      <ul>
-        <% @event.errors.full_messages.each do |message| %>
-          <li><%= message %></li>
-        <% end %>
-      </ul>
+<div class="event-form">
+  <%= form_with(model: @event, local: true) do |form| %>
+    <% if @event.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@event.errors.count, "error") %> 件のエラーが発生しました:</h2>
+        <ul>
+          <% @event.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="form-group">
+      <%= form.label :title, "タイトル" %>
+      <%= form.text_field :title, class: "form-control", placeholder: "（〜30字）" %>
     </div>
+
+    <div class="form-group">
+      <%= form.label :catchphrase, "キャッチコピー" %>
+      <%= form.text_field :catchphrase, class: "form-control", placeholder: "（〜25字）" %>
+    </div>
+
+    <div class="form-group">
+      <label>サムネイル / 追加画像1 / 追加画像2</label>
+      <div class="image-upload">
+        <div class="image-preview" id="thumbnail-preview">
+          <%= form.file_field :thumbnail, direct_upload: true, id: 'thumbnail-input', style: "display: none;" %>
+          <button type="button" class="btn btn-add-image" data-input-id="thumbnail-input">＋</button>
+        </div>
+        <div class="image-preview" id="image1-preview">
+          <%= form.file_field :image_1, direct_upload: true, id: 'image1-input', style: "display: none;" %>
+          <button type="button" class="btn btn-add-image" data-input-id="image1-input">＋</button>
+        </div>
+        <div class="image-preview" id="image2-preview">
+          <%= form.file_field :image_2, direct_upload: true, id: 'image2-input', style: "display: none;" %>
+          <button type="button" class="btn btn-add-image" data-input-id="image2-input">＋</button>
+        </div>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :body, "本文" %>
+      <%= form.text_area :body, class: "form-control", placeholder: "本文（10字〜10000字）" %>
+    </div>
+
+    <div class="form-group datetime-select">
+      <%= form.label :start_date, "開始日時" %>
+      <div class="datetime-fields">
+        <%= form.date_select :start_date, { order: [:year, :month, :day] }, { class: "form-control" } %>
+        <%= form.time_select :start_date, { order: [:hour, :minute] }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group datetime-select">
+      <%= form.label :end_date, "終了日時" %>
+      <div class="datetime-fields">
+        <%= form.date_select :end_date, { order: [:year, :month, :day] }, { class: "form-control" } %>
+        <%= form.time_select :end_date, { order: [:hour, :minute] }, { class: "form-control" } %>
+      </div>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :area, "地域" %>
+      <%= form.select :area, [['渋谷', '渋谷'], ['原宿', '原宿'], ['青山', '青山'], ['広尾', '広尾'], ['松濤', '松濤'], ['池尻', '池尻'], ['恵比寿', '恵比寿'], ['代官山', '代官山'], ['中目黒', '中目黒'], ['表参道', '表参道']], { prompt: '選択してください' }, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :place, "開催場所" %>
+      <%= form.text_field :place, class: "form-control", placeholder: "入力してください" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :station, "最寄駅" %>
+      <%= form.text_field :station, class: "form-control", placeholder: "入力してください" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :category, "カテゴリ" %>
+      <%= form.select :category, [['グルメ', 'グルメ'], ['ショッピング', 'ショッピング'], ['体験', '体験'], ['展覧会', '展覧会'], ['温泉', '温泉'], ['サブカルチャー', 'サブカルチャー'], ['観光・旅行', '観光・旅行']], { prompt: '選択してください' }, class: "form-control" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :contact, "連絡先" %>
+      <%= form.text_field :contact, class: "form-control", placeholder: "（任意）" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :cost, "費用" %>
+      <%= form.text_field :cost, class: "form-control", placeholder: "（半角数字）" %>
+    </div>
+
+    <div class="form-group">
+      <%= form.label :link, "リンク" %>
+      <%= form.url_field :link, class: "form-control", placeholder: "（任意）" %>
+    </div>
+
+    <%= form.submit "更新する", class: "btn btn-submit" %>
+
   <% end %>
-
-  <div>
-    <%= form.label :title, "タイトル" %><br>
-    <%= form.text_field :title, placeholder: "（〜30字）" %>
-  </div>
-
-  <div>
-    <%= form.label :catchphrase, "キャッチコピー" %><br>
-    <%= form.text_field :catchphrase, placeholder: "（〜25字）" %>
-  </div>
-
-  <div>
-    <%= form.label :thumbnail, "サムネイル画像" %><br>
-    <%= form.file_field :thumbnail, direct_upload: true %>
-  </div>
-
-  <div>
-    <%= form.label :images, "追加画像 (最大2枚)" %><br>
-    <%= form.file_field :images, multiple: true, direct_upload: true %>
-  </div>
-
-  <div>
-    <%= form.label :body, "本文" %><br>
-    <%= form.text_area :body, placeholder: "本文（10字〜10000字）" %>
-  </div>
-
-  <div>
-    <%= form.label :start_date, "開始日時" %><br>
-    <%= form.datetime_select :start_date %>
-  </div>
-
-  <div>
-    <%= form.label :end_date, "終了日時" %><br>
-    <%= form.datetime_select :end_date %>
-  </div>
-
-  <div>
-    <%= form.label :area, "地域" %><br>
-    <%= form.select :area, [['渋谷', '渋谷'], ['原宿', '原宿'], ['青山', '青山'], ['広尾', '広尾'], ['松濤', '松濤'], ['池尻', '池尻'], ['恵比寿', '恵比寿'], ['代官山', '代官山'], ['中目黒', '中目黒'], ['表参道', '表参道']], { prompt: '選択してください' } %>
-  </div>
-
-  <div>
-    <%= form.label :place, "開催場所" %><br>
-    <%= form.text_field :place, placeholder: "入力してください" %>
-  </div>
-
-  <div>
-    <%= form.label :station, "最寄駅" %><br>
-    <%= form.text_field :station, placeholder: "入力してください" %>
-  </div>
-
-  <div>
-    <%= form.label :category, "カテゴリ" %><br>
-    <%= form.select :category, [['グルメ', 'グルメ'], ['ショッピング', 'ショッピング'], ['体験', '体験'], ['展覧会', '展覧会'], ['温泉', '温泉'], ['サブカルチャー', 'サブカルチャー'], ['観光・旅行', '観光・旅行']], { prompt: '選択してください' } %>
-  </div>
-
-  <div>
-    <%= form.label :contact, "連絡先" %><br>
-    <%= form.text_field :contact, placeholder: "（任意）" %>
-  </div>
-
-  <div>
-    <%= form.label :cost, "費用" %><br>
-    <%= form.text_field :cost, placeholder: "（半角数字）" %>
-  </div>
-
-  <div>
-    <%= form.label :link, "リンク" %><br>
-    <%= form.url_field :link, placeholder: "（任意）" %>
-  </div>
-
-  <div>
-    <%= form.submit "更新する" %>
-  </div>
-
-<% end %>
+</div>

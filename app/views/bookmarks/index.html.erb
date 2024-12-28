@@ -7,9 +7,13 @@
         <div class="card">
           <div class="thumbnail-container">
             <% if event.thumbnail.present? %>
-              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
             <% else %>
-              <div class="thumbnail-placeholder">No Image Available</div>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Image Available</div>
+              <% end %>
             <% end %>
           </div>
           <div class="card-body">

@@ -6,13 +6,19 @@
         <div class="card">
           <div class="thumbnail-container">
             <% if event.thumbnail.present? %>
-              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
             <% else %>
-              <div class="thumbnail-placeholder">No Image Available</div>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Image Available</div>
+              <% end %>
             <% end %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
+            <h5 class="card-title">
+              <%= link_to event.title, event_path(event), class: "card-title-link" %>
+            </h5>
           </div>
         </div>
       </div>
@@ -26,23 +32,30 @@
         <div class="card">
           <div class="thumbnail-container">
             <% if event.thumbnail.present? %>
-              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
             <% else %>
-              <div class="thumbnail-placeholder">No Image Available</div>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Image Available</div>
+              <% end %>
             <% end %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
-            <p class="card-text"><%= event.catchphrase %></p>
+            <h5 class="card-title">
+              <%= link_to event.title, event_path(event), class: "card-title-link" %>
+            </h5>
+            <p class="card-text">
+              <%= link_to event.catchphrase, event_path(event), class: "card-text-link" %>
+            </p>
             <p class="card-text text-muted">
-            <%= pluralize(event.bookmarks.count, "Bookmark") %>
+              <%= pluralize(event.bookmarks.count, "Bookmark") %>
             </p>
           </div>
         </div>
       </div>
     <% end %>
   </div>
-
   <div class="center-button">
     <%= link_to 'もっと見る', search_path, class: 'btn btn-primary' %>
   </div>
@@ -56,14 +69,22 @@
         <div class="card">
           <div class="thumbnail-container">
             <% if event.thumbnail.present? %>
-              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
             <% else %>
-              <div class="thumbnail-placeholder">No Image Available</div>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Image Available</div>
+              <% end %>
             <% end %>
           </div>
           <div class="card-body">
-            <h5 class="card-title"><%= event.title %></h5>
-            <p class="card-text"><%= event.catchphrase %></p>
+            <h5 class="card-title">
+              <%= link_to event.title, event_path(event), class: "card-title-link" %>
+            </h5>
+            <p class="card-text">
+              <%= link_to event.catchphrase, event_path(event), class: "card-text-link" %>
+            </p>
           </div>
         </div>
       </div>

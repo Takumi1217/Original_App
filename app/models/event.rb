@@ -6,7 +6,8 @@ class Event < ApplicationRecord
 
   # 添付ファイル
   has_one_attached :thumbnail
-  has_many_attached :images
+  has_one_attached :image_1
+  has_one_attached :image_2
 
   AREA_OPTIONS = %w[渋谷 原宿 青山 広尾 松濤 池尻 恵比寿 代官山 中目黒 表参道].freeze
   CATEGORY_OPTIONS = %w[グルメ ショッピング 体験 展覧会 温泉 サブカルチャー 観光・旅行].freeze
@@ -31,7 +32,11 @@ class Event < ApplicationRecord
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'はPNG、JPG形式の画像を指定してください' },
             size: { less_than: 5.megabytes, message: 'は5MB以下のファイルにしてください' }
 
-  validates :images,
+  validates :image_1,
+            content_type: { in: %w[image/png image/jpg image/jpeg], message: 'はPNG、JPG形式の画像を指定してください' },
+            size: { less_than: 5.megabytes, message: 'は5MB以下のファイルにしてください' }
+
+  validates :image_2,
             content_type: { in: %w[image/png image/jpg image/jpeg], message: 'はPNG、JPG形式の画像を指定してください' },
             size: { less_than: 5.megabytes, message: 'は5MB以下のファイルにしてください' }
 

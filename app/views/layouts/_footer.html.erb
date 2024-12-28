@@ -1,100 +1,49 @@
 <footer class="footer">
   <div class="container">
-    <!-- Follow Us セクション -->
-    <div class="d-flex flex-column text-center mb-4">
-      <div class="col-12">
+    <div class="footer-container">
+      <!-- Follow Us -->
+      <div class="footer-section">
         <h5>Follow Us</h5>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i> Twitter</a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-facebook"></i> Facebook</a></li>
-          <li class="list-inline-item"><a href="#"><i class="fab fa-instagram"></i> Instagram</a></li>
-        </ul>
+        <div class="social-links">
+          <%= link_to "Twitter", "https://twitter.com", target: "_blank" %>
+          <%= link_to "Facebook", "https://facebook.com", target: "_blank" %>
+          <%= link_to "Instagram", "https://instagram.com", target: "_blank" %>
+        </div>
       </div>
-    </div>
 
-    <!-- イベント セクション -->
-    <div class="d-flex flex-wrap">
-      <div class="col-md-4">
-        <h5>エリア</h5>
-        <ul class="list-inline">
-          <%= link_to '渋谷', search_path(q: {combined_search: '渋谷'}) %>
-          <li class="list-inline-item"><a href="#">原宿</a></li>
-          <li class="list-inline-item"><a href="#">青山</a></li>
-          <li class="list-inline-item"><a href="#">広尾</a></li>
-          <li class="list-inline-item"><a href="#">松濤</a></li>
-          <li class="list-inline-item"><a href="#">池尻</a></li>
-          <li class="list-inline-item"><a href="#">恵比寿</a></li>
-          <li class="list-inline-item"><a href="#">代官山</a></li>
-          <li class="list-inline-item"><a href="#">中目黒</a></li>
-          <li class="list-inline-item"><a href="#">表参道</a></li>
+      <!-- イベント -->
+      <div class="footer-section left-align">
+        <h5>イベント</h5>
+        <ul>
+          <li>エリア　：渋谷 原宿 青山 広尾 松濤 池尻 恵比寿 代官山 中目黒 表参道</li>
+          <li>カテゴリ：グルメ ショッピング 体験 展覧会 温泉 サブカルチャー 旅行・旅行 無料</li>
+          <li>シーン　：ひとり 友達 家族 デート</li>
+          <li>いつ　　：今日 明日 今週末 春 夏 秋 冬 ハロウィン クリスマス お正月</li>
         </ul>
       </div>
-      <div class="col-md-4">
-        <h5>カテゴリ</h5>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">グルメ</a></li>
-          <li class="list-inline-item"><a href="#">買い物・ショッピング</a></li>
-          <li class="list-inline-item"><a href="#">体験・遊び</a></li>
-          <li class="list-inline-item"><a href="#">展示・展覧会</a></li>
-          <li class="list-inline-item"><a href="#">温泉・スパ</a></li>
-          <li class="list-inline-item"><a href="#">アニメ・漫画・ゲーム</a></li>
-          <li class="list-inline-item"><a href="#">観光・旅行</a></li>
-          <li class="list-inline-item"><a href="#">無料</a></li>
-        </ul>
-      </div>
-      <div class="col-md-4">
-        <h5>シーン</h5>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">デート</a></li>
-          <li class="list-inline-item"><a href="#">ひとり</a></li>
-          <li class="list-inline-item"><a href="#">友達</a></li>
-          <li class="list-inline-item"><a href="#">家族</a></li>
-        </ul>
-        <h5>いつ</h5>
-        <ul class="list-inline">
-          <li class="list-inline-item"><a href="#">今日</a></li>
-          <li class="list-inline-item"><a href="#">明日</a></li>
-          <li class="list-inline-item"><a href="#">今週末</a></li>
-          <li class="list-inline-item"><a href="#">春</a></li>
-          <li class="list-inline-item"><a href="#">夏</a></li>
-          <li class="list-inline-item"><a href="#">秋</a></li>
-          <li class="list-inline-item"><a href="#">冬</a></li>
-          <li class="list-inline-item"><a href="#">ハロウィン</a></li>
-          <li class="list-inline-item"><a href="#">クリスマス</a></li>
-          <li class="list-inline-item"><a href="#">お正月</a></li>
-        </ul>
-      </div>
-    </div>
 
-    <!-- 特集 セクション -->
-    <div class="d-flex flex-column mt-4">
-      <div class="col-12">
+      <!-- 特集 -->
+      <div class="footer-section left-align">
         <h5>特集</h5>
-        <ul class="list-inline text-center">
-          <li class="list-inline-item"><a href="#">お正月</a></li>
-          <li class="list-inline-item"><a href="#">お花見</a></li>
-          <li class="list-inline-item"><a href="#">ゴールデンウィーク</a></li>
-          <li class="list-inline-item"><a href="#">ビアガーデン</a></li>
-          <li class="list-inline-item"><a href="#">バーベキュー・キャンプ</a></li>
-          <li class="list-inline-item"><a href="#">夏祭り</a></li>
-          <li class="list-inline-item"><a href="#">花火</a></li>
-          <li class="list-inline-item"><a href="#">秋祭り</a></li>
-          <li class="list-inline-item"><a href="#">ハロウィン</a></li>
-          <li class="list-inline-item"><a href="#">イルミネーション</a></li>
-          <li class="list-inline-item"><a href="#">クリスマス</a></li>
-          <li class="list-inline-item"><a href="#">歓迎会・送迎会</a></li>
+        <ul>
+          <li>お正月 お花見 ゴールデンウィーク ビアガーデン
+              バーベキュー・キャンプ 夏祭り 花火 秋祭り
+              ハロウィン イルミネーション クリスマス 歓迎会・送迎会</li>
+        </ul>
+      </div>
+
+      <!-- リンク -->
+      <div class="footer-section">
+        <ul class="footer-links">
+          <li><%= link_to "利用規約", agreement_path %></li>
+          <li><%= link_to "プライバシーポリシー", policy_path %></li>
+          <li><%= link_to "ヘルプ", help_path %></li>
+          <li><%= link_to "お問い合わせ", contact_path %></li>
         </ul>
       </div>
     </div>
-
-    <!-- フッター下部リンク -->
-    <div class="text-center mt-4">
-      <ul class="list-inline">
-        <li class="list-inline-item"><%= link_to "利用規約", agreement_path %></li>
-        <li class="list-inline-item"><%= link_to "プライバシーポリシー", policy_path %></li>
-        <li class="list-inline-item"><%= link_to "ヘルプ", help_path %></li>
-        <li class="list-inline-item"><%= link_to "お問い合わせ", contact_path %></li>
-      </ul>
+    <div class="footer-bottom">
+      © Shibuya, Inc.
     </div>
   </div>
 </footer>

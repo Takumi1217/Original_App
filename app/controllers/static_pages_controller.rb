@@ -5,7 +5,7 @@ class StaticPagesController < ApplicationController
     @popular_events = Event.unscope(:order)
                             .joins(:bookmarks)
                             .group('events.id')
-                            .order('COUNT(bookmarks.id) DESC') # Bookmarks数で並べ替え
+                            .order('COUNT(bookmarks.id) DESC')
                             .limit(9) # 人気イベント用
   end
 

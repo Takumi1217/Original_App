@@ -7,17 +7,21 @@
         <div class="card">
           <div class="thumbnail-container">
             <% if event.thumbnail.present? %>
-              <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
             <% else %>
-              <div class="thumbnail-placeholder">No Image Available</div>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Image Available</div>
+              <% end %>
             <% end %>
           </div>
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-between align-items-center">
-              <%= link_to event.title, event_path(event) %>
-              <div>
-                <%= link_to "編集", edit_event_path(event), class: "btn btn-sm btn-warning" %>
-                <%= button_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-danger" %>
+              <span class="event-title"><%= link_to event.title, event_path(event) %></span>
+              <div class="event-actions">
+                <%= link_to "編集", edit_event_path(event), class: "btn btn-sm btn-edit" %>
+                <%= button_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-delete" %>
               </div>
             </h5>
           </div>
@@ -25,6 +29,11 @@
       </div>
     <% end %>
   </div>
+
+  <div class="pagination-container">
+    <%= will_paginate @events %>
+  </div>
+
 <% else %>
   <p>まだイベントを投稿していません。</p>
   <div class="center-button">

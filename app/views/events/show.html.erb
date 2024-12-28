@@ -1,21 +1,47 @@
 <h1><%= @event.title %></h1>
 
 <div class="event-details">
-  <p><strong>開始日:</strong> <%= @event.start_date %></p>
-  <p><strong>場所:</strong> <%= @event.place %></p>
-  <p><strong>最寄駅:</strong> <%= @event.station %></p>
-  <p><strong>エリア:</strong> <%= @event.area %></p>
-  <p><strong>カテゴリ:</strong> <%= @event.category %></p>
+  <p><strong>開始日:</strong><%= @event.start_date.strftime('%Y年%m月%d日') if @event.start_date.present? %>〜</p>
+  <p><strong>場所:</strong><%= @event.place %></p>
+  <div class="d-flex">
+    <p><strong>最寄駅:</strong><%= @event.station %></p>
+    <p><strong>エリア:</strong><%= @event.area %></p>
+    <p><strong>カテゴリ:</strong><%= @event.category %></p>
+  </div>
 </div>
 
-<h2>基本情報</h2>
-<div class="event-info">
-  <p><strong>サムネイル:</strong></p>
-  <%= image_tag @event.thumbnail.url if @event.thumbnail.present? %>
-  <p><strong>画像1:</strong></p>
-  <%= image_tag @event.image_1.url if @event.image_1.present? %>
-  <p><strong>画像2:</strong></p>
-  <%= image_tag @event.image_2.url if @event.image_2.present? %>
+<h3>基本情報</h3>
+
+<div class="row">
+  <div class="col-md-4 text-center">
+    <% if @event.thumbnail.attached? %>
+      <div class="thumbnail-container">
+        <%= image_tag @event.thumbnail, alt: 'Thumbnail', class: 'card-img-top' %>
+      </div>
+    <% else %>
+      <div class="thumbnail-placeholder">No Image Available</div>
+    <% end %>
+  </div>
+
+  <div class="col-md-4 text-center">
+    <% if @event.image_1.attached? %>
+      <div class="thumbnail-container">
+        <%= image_tag @event.image_1, alt: 'Image 1', class: 'card-img-top' %>
+      </div>
+    <% else %>
+      <div class="thumbnail-placeholder">No Image Available</div>
+    <% end %>
+  </div>
+
+  <div class="col-md-4 text-center">
+    <% if @event.image_2.attached? %>
+      <div class="thumbnail-container">
+        <%= image_tag @event.image_2, alt: 'Image 2', class: 'card-img-top' %>
+      </div>
+    <% else %>
+      <div class="thumbnail-placeholder">No Image Available</div>
+    <% end %>
+  </div>
 </div>
 
 <p><strong><%= @event.catchphrase %></strong></p>
@@ -24,15 +50,13 @@
   <p><%= @event.body %></p>
 </div>
 
-<h2>追加情報</h2>
+<h3>詳細</h3>
 <div class="event-extra-details">
-  <p><strong>場所:</strong> <%= @event.place %></p>
-  <p><strong>最寄り駅:</strong> <%= @event.station %></p>
-  <p><strong>エリア:</strong> <%= @event.area %></p>
-  <p><strong>開始日:</strong> <%= @event.start_date %></p>
-  <p><strong>終了日:</strong> <%= @event.end_date %></p>
-  <p><strong>お問い合わせ:</strong> <%= @event.contact %></p>
-  <p><strong>リンク:</strong> <%= link_to @event.link, @event.link, target: '_blank' if @event.link.present? %></p>
+  <p><strong>場所:</strong><%= @event.place %></p>
+  <p><strong>最寄駅:</strong><%= @event.station %></p>
+  <p><strong>開催期間:</strong><%= @event.start_date %> ~ <%= @event.end_date %></p>
+  <p><strong>お問い合わせ:</strong><%= @event.contact %></p>
+  <p><strong>リンク:</strong><%= link_to @event.link, @event.link, target: '_blank' if @event.link.present? %></p>
 </div>
 
 <%= link_to '戻る', events_path, class: 'btn btn-secondary' %>

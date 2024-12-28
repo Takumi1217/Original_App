@@ -8,23 +8,23 @@ class BookmarksController < ApplicationController
   def create
     @bookmark = current_user.bookmarks.build(event_id: params[:event_id])
     if @bookmark.save
-      flash[:success] = "イベントをブックマークしました！"
+      flash[:success] = "Bookmarked the event!"
     else
-      flash[:danger] = "ブックマークに失敗しました。"
+      flash[:danger] = "Bookmarking failed."
     end
-    redirect_to events_path # リダイレクト先はevents#index
+    redirect_to events_path
   end
 
   def destroy
     @bookmark = current_user.bookmarks.find(params[:id])
     @bookmark.destroy
-    flash[:success] = "ブックマークを解除しました。"
+    flash[:success] = "Removed the bookmark."
 
     # リダイレクト先を判別
     if request.referer.include?('bookmarks')
-      redirect_to bookmarks_path # ブックマークページに戻る
+      redirect_to bookmarks_path
     else
-      redirect_to events_path # イベントページに戻る
+      redirect_to events_path
     end
   end
 
@@ -32,7 +32,7 @@ class BookmarksController < ApplicationController
 
   def logged_in_user
     unless logged_in?
-      flash[:danger] = "ログインしてください。"
+      flash[:danger] = "Please log in."
       redirect_to login_path
     end
   end

@@ -1,13 +1,19 @@
+<% provide(:title, @user.name) %>
 <h1 class="centered-title">プロフィール</h1>
 
-<% provide(:title, @user.name) %>
 <div class="row">
-  <aside class="col-md-4">
-    <section class="user_info">
-      <h1>
+  <div class="col-md-6 col-md-offset-3">
+    <div class="user-profile">
+      <h2>
         <%= gravatar_for @user %>
         <%= @user.name %>
-      </h1>
-    </section>
-  </aside>
+      </h2>
+      <h3>
+        <%= @user.email %>
+      </h3>
+    </div>
+    <div class="center-button">
+      <%= link_to '設定', edit_user_path, class: 'btn btn-primary' %>
+    </div>
+  </div>
 </div>

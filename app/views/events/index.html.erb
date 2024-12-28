@@ -1,9 +1,8 @@
 <h1>新着イベント</h1>
 
-<%= search_form_for @q, url: events_path, method: :get do |f| %>
-  <div>
-    <%= f.label :combined_search, "検索" %>
-    <%= f.text_field :combined_search, placeholder: "キーワードから絞り込む" %>
+<%= search_form_for @q, url: events_path, method: :get, html: { class: "search-form" } do |f| %>
+  <div class="form-inline">
+    <%= f.text_field :combined_search, placeholder: "キーワードから絞り込む", class: "form-control" %>
     <%= f.submit "検索", class: "btn btn-primary" %>
   </div>
 <% end %>
@@ -14,17 +13,19 @@
       <div class="col-md-4 col-sm-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
-            <!-- エリアとブックマークボタン -->
-            <div class="d-flex justify-content-between align-items-center mb-2">
-              <span>東京都　<%= event.area %></span>
-              <% if current_user %>
+          <!-- エリアとブックマークボタン -->
+          <div class="d-flex justify-content-between align-items-center mb-2">
+            <span>東京都　<%= event.area %></span>
+            <% if current_user %>
+              <div class="bookmark-button-container">
                 <% if current_user.bookmarks.exists?(event: event) %>
                   <%= button_to "ブックマーク解除", bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-sm btn-danger" %>
                 <% else %>
                   <%= button_to "ブックマーク", bookmarks_path(event_id: event.id), method: :post, class: "btn btn-sm btn-primary" %>
                 <% end %>
-              <% end %>
-            </div>
+              </div>
+            <% end %>
+          </div>
 
             <!-- タイトル -->
             <h5 class="card-title"><%= link_to event.title, event_path(event) %></h5>
