@@ -20,10 +20,12 @@ user = User.create!(name:  "Example User",
                activated_at: Time.zone.now)
 end
 
+# ユーザーリストを取得
+users = User.all
+
 # サンプルイベント
 100.times do
   start_date = Faker::Time.forward(days: 30, period: :morning)
-  end_date = Faker::Time.forward(days: 31, period: :evening)
   end_date = Faker::Time.between(from: start_date, to: start_date + 1.day)
 
   Event.create!(
@@ -39,7 +41,7 @@ end
     contact: Faker::PhoneNumber.phone_number.gsub(/\D/, '')[0..10],
     cost: Faker::Commerce.price(range: 0..1000.0),
     link: Faker::Internet.url,
-    user_id: user.id,
+    user_id: users.sample.id,
     thumbnail: nil,
     image_1: nil,
     image_2: nil
@@ -49,7 +51,6 @@ end
 # サンプルイベント(cost:0)
 10.times do
   start_date = Faker::Time.forward(days: 30, period: :morning)
-  end_date = Faker::Time.forward(days: 31, period: :evening)
   end_date = Faker::Time.between(from: start_date, to: start_date + 1.day)
 
   Event.create!(
@@ -65,7 +66,7 @@ end
     contact: Faker::PhoneNumber.phone_number.gsub(/\D/, '')[0..10],
     cost: 0,
     link: Faker::Internet.url,
-    user_id: user.id,
+    user_id: users.sample.id,
     thumbnail: nil,
     image_1: nil,
     image_2: nil

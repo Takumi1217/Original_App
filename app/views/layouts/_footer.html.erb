@@ -12,23 +12,57 @@
       </div>
 
       <!-- イベント -->
-      <div class="footer-section left-align">
+      <div class="footer-section left-align event">
         <h5>イベント</h5>
         <ul>
-          <li>エリア　：渋谷 原宿 青山 広尾 松濤 池尻 恵比寿 代官山 中目黒 表参道</li>
-          <li>カテゴリ：グルメ ショッピング 体験 展覧会 温泉 サブカルチャー 旅行・旅行 無料</li>
-          <li>シーン　：ひとり 友達 家族 デート</li>
-          <li>いつ　　：今日 明日 今週末 春 夏 秋 冬 ハロウィン クリスマス お正月</li>
-        </ul>
-      </div>
-
-      <!-- 特集 -->
-      <div class="footer-section left-align">
-        <h5>特集</h5>
-        <ul>
-          <li>お正月 お花見 ゴールデンウィーク ビアガーデン
-              バーベキュー・キャンプ 夏祭り 花火 秋祭り
-              ハロウィン イルミネーション クリスマス 歓迎会・送迎会</li>
+          <li><strong>エリア</strong>
+            <ul>
+              <li><%= link_to "渋谷", events_path(q: { area_eq: "渋谷" }) %></li>
+              <li><%= link_to "原宿", events_path(q: { area_eq: "原宿" }) %></li>
+              <li><%= link_to "青山", events_path(q: { area_eq: "青山" }) %></li>
+              <li><%= link_to "広尾", events_path(q: { area_eq: "広尾" }) %></li>
+              <li><%= link_to "松濤", events_path(q: { area_eq: "松濤" }) %></li>
+              <li><%= link_to "池尻", events_path(q: { area_eq: "池尻" }) %></li>
+              <li><%= link_to "恵比寿", events_path(q: { area_eq: "恵比寿" }) %></li>
+              <li><%= link_to "代官山", events_path(q: { area_eq: "代官山" }) %></li>
+              <li><%= link_to "中目黒", events_path(q: { area_eq: "中目黒" }) %></li>
+              <li><%= link_to "表参道", events_path(q: { area_eq: "表参道" }) %></li>
+            </ul>
+          </li>
+          <li><strong>カテゴリ</strong>
+            <ul>
+              <li><%= link_to "グルメ", events_path(q: { category_eq: "グルメ" }) %></li>
+              <li><%= link_to "ショッピング", events_path(q: { category_eq: "ショッピング" }) %></li>
+              <li><%= link_to "体験", events_path(q: { category_eq: "体験" }) %></li>
+              <li><%= link_to "展覧会", events_path(q: { category_eq: "展覧会" }) %></li>
+              <li><%= link_to "温泉", events_path(q: { category_eq: "温泉" }) %></li>
+              <li><%= link_to "サブカルチャー", events_path(q: { category_eq: "サブカルチャー" }) %></li>
+              <li><%= link_to "旅行", events_path(q: { category_eq: "旅行" }) %></li>
+            </ul>
+          </li>
+          <li><strong>いつ</strong>
+            <ul>
+              <li><%= link_to "今日", events_path(q: { start_date_gteq: Date.current.beginning_of_day, end_date_lteq: Date.current.end_of_day }) %></li>
+              <li><%= link_to "明日", events_path(q: { start_date_gteq: Date.tomorrow.beginning_of_day, end_date_lteq: Date.tomorrow.end_of_day }) %></li>
+              <li><%= link_to "今週末", events_path(q: { start_date_gteq: Date.current.at_beginning_of_week.end_of_week.beginning_of_day, end_date_lteq: Date.current.at_beginning_of_week.end_of_week.end_of_day }) %></li>
+              <li><%= link_to "春", events_path(q: { start_date_gteq: Date.new(Date.current.year, 3, 20), end_date_lteq: Date.new(Date.current.year, 6, 20) }) %></li>
+              <li><%= link_to "夏", events_path(q: { start_date_gteq: Date.new(Date.current.year, 6, 21), end_date_lteq: Date.new(Date.current.year, 9, 22) }) %></li>
+              <li><%= link_to "秋", events_path(q: { start_date_gteq: Date.new(Date.current.year, 9, 23), end_date_lteq: Date.new(Date.current.year, 12, 21) }) %></li>
+              <li><%= link_to "冬", events_path(q: { start_date_gteq: Date.new(Date.current.year, 12, 22), end_date_lteq: Date.new(Date.current.year, 3, 19) }) %></li>
+              <li><%= link_to "ハロウィン", events_path(q: { start_date_gteq: Date.new(Date.current.year, 10, 31), end_date_lteq: Date.new(Date.current.year, 10, 31).end_of_day }) %></li>
+              <li><%= link_to "クリスマス", events_path(q: { start_date_gteq: Date.new(Date.current.year, 12, 25), end_date_lteq: Date.new(Date.current.year, 12, 25).end_of_day }) %></li>
+              <li><%= link_to "お正月", events_path(q: { start_date_gteq: Date.new(Date.current.year, 1, 1), end_date_lteq: Date.new(Date.current.year, 1, 1).end_of_day }) %></li>
+            </ul>
+          </li>
+          <li><strong>値段</strong>
+            <ul>
+              <li><%= link_to "無料", events_path(q: { cost_eq: "0" }) %></li>
+              <li><%= link_to "100円〜1,000円", events_path(q: { cost_gteq: "100", cost_lteq: "1000" }) %></li>
+              <li><%= link_to "1,000円〜5,000円", events_path(q: { cost_gteq: "1000", cost_lteq: "5000" }) %></li>
+              <li><%= link_to "5,000円〜10,000円", events_path(q: { cost_gteq: "5000", cost_lteq: "10000" }) %></li>
+              <li><%= link_to "10,000円〜", events_path(q: { cost_gteq: "10000" }) %></li>
+            </ul>
+          </li>
         </ul>
       </div>
 
@@ -42,6 +76,7 @@
         </ul>
       </div>
     </div>
+
     <div class="footer-bottom">
       © Shibuya, Inc.
     </div>

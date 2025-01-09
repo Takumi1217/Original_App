@@ -22,20 +22,11 @@ document.addEventListener('turbo:load', () => {
         }
       });
     }
-
-    // 「－」ボタンで画像を削除
-    if (removeBtn) {
-      removeBtn.addEventListener('click', () => {
-        preview.innerHTML = '';
-        input.value = '';
-        removeBtn.style.display = 'none';
-      });
-    }
   }
 
-  previewImage('thumbnail-input', 'thumbnail-preview', 'remove-thumbnail');
-  previewImage('image1-input', 'image1-preview', 'remove-image1');
-  previewImage('image2-input', 'image2-preview', 'remove-image2');
+  previewImage('thumbnail-input', 'thumbnail-preview');
+  previewImage('image1-input', 'image1-preview');
+  previewImage('image2-input', 'image2-preview');  
 
   // 「＋」ボタンでファイル選択をトリガーする
   const addImageButtons = document.querySelectorAll('.btn-add-image');

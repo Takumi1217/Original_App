@@ -25,10 +25,37 @@
         <% else %>
           <li><%= link_to "ログイン／登録", login_path %></li>
         <% end %>
-        <li><%= link_to "検索", search_path %></li>
-        <li><%= link_to "閲覧履歴", history_path %></li>
-        <li><%= link_to "お知らせ", notice_path %></li>
+        <li>
+          <a href="#" id="offcanvas-toggle">
+            <i class="glyphicon glyphicon-menu-hamburger"></i>
+          </a>
+        </li>
       </ul>
     </nav>
   </div>
 </header>
+
+<!-- オフキャンバスメニュー -->
+<aside id="offcanvas-menu" class="offcanvas-menu">
+  <div class="offcanvas-header">
+    <button id="offcanvas-close">&times;</button>
+  </div>
+  <ul class="offcanvas-mobile-list">
+    <% if logged_in? %>
+      <li><%= link_to "プロフィール", current_user %></li>
+      <li><%= link_to "イベントを投稿", new_event_path %></li>
+      <li><%= link_to "自分のイベント", my_events_path %></li>
+      <li><%= link_to "ブックマーク", my_bookmarks_path %></li>
+      <li><%= link_to "設定", edit_user_path(current_user) %></li>
+      <li><%= link_to "ログアウト", logout_path,
+                                 data: { "turbo-method": :delete } %></li>
+    <% else %>
+      <li><%= link_to "ログイン／登録", login_path %></li>
+    <% end %>
+  </ul>
+  <ul class="offcanvas-list">
+    <li><%= link_to "検索", search_path %></li>
+    <li><%= link_to "閲覧履歴", history_path %></li>
+    <li><%= link_to "お知らせ", notice_path %></li>
+  </ul>
+</aside>
