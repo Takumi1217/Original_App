@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   get 'sessions/new'
   root "static_pages#home"
   get  "/history", to: "static_pages#history"
-  get  "/notice", to: "static_pages#notice"
   get  "/agreement", to: "static_pages#agreement"
   get  "/policy", to: "static_pages#policy"
   get  "/help", to: "static_pages#help"
@@ -21,4 +20,5 @@ Rails.application.routes.draw do
   get  "/search", to: "events#index"
   resources :bookmarks, only: [:index, :create, :destroy]
   get "/my_bookmarks", to: "bookmarks#index"
+  resources :notices, only: [:index]
 end

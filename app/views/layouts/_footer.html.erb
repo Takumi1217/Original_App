@@ -57,7 +57,7 @@
           <li><strong>値段</strong>
             <ul>
               <li><%= link_to "無料", events_path(q: { cost_eq: "0" }) %></li>
-              <li><%= link_to "100円〜1,000円", events_path(q: { cost_gteq: "100", cost_lteq: "1000" }) %></li>
+              <li><%= link_to "〜1,000円", events_path(q: { cost_lteq: "1000" }) %></li>
               <li><%= link_to "1,000円〜5,000円", events_path(q: { cost_gteq: "1000", cost_lteq: "5000" }) %></li>
               <li><%= link_to "5,000円〜10,000円", events_path(q: { cost_gteq: "5000", cost_lteq: "10000" }) %></li>
               <li><%= link_to "10,000円〜", events_path(q: { cost_gteq: "10000" }) %></li>

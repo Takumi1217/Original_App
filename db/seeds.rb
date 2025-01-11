@@ -81,3 +81,12 @@ User.find_each do |user|
     Bookmark.find_or_create_by!(user_id: user.id, event_id: event.id)
   end
 end
+
+# お知らせのサンプルデータ
+10.times do |n|
+  Notice.create!(
+    title: "#{n + 1}のお知らせ",
+    body: "これはお知らせの内容です。詳細情報がここに入ります。",
+    published_at: Faker::Time.backward(days: 30, period: :evening)
+  )
+end

@@ -1,0 +1,12 @@
+<% provide(:title, "Notice") %>
+<h1>お知らせ</h1>
+<table class="table">
+  <tbody>
+    <% @notices.each do |notice| %>
+      <tr>
+        <td><i class="glyphicon glyphicon-time"></i> <%= notice.published_at.strftime('%Y/%m/%d') %></td>
+        <td><%= notice.title %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

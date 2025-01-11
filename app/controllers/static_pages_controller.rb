@@ -8,22 +8,4 @@ class StaticPagesController < ApplicationController
                             .order('COUNT(bookmarks.id) DESC')
                             .limit(9) # 人気イベント用
   end
-
-  def agreement
-  end
-
-  def policy
-  end
-
-  def help
-  end
-
-  def contact
-  end
-
-  def history
-  end
-
-  def notice
-  end
 end
