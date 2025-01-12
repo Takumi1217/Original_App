@@ -5,7 +5,34 @@
       <ul class="nav navbar-nav navbar-right">
         <li><%= link_to "EN", '#' %></li>
         <% if logged_in? %>
-          <li><%= link_to raw('<i class="glyphicon glyphicon-bell"></i>'), '#' %></li>
+          <li id="notification-icon">
+            <a href="#" id="notification-toggle">
+              <i class="glyphicon glyphicon-bell"></i>
+            </a>
+            <ul id="notification-dropdown" class="dropdown-menu">
+              <li class="dropdown-header">
+                <strong>通知</strong>
+                <%= link_to '通知一覧', event_reminders_path, class: 'pull-right' %>
+              </li>
+              <% if @notifications.any? %>
+                <% @notifications.each do |notification| %>
+                  <li>
+                    <%= link_to event_path(notification.event_id) do %>
+                      <div>
+                        <strong><%= notification.title %></strong>
+                        <p><%= notification.body %></p>
+                        <small><%= notification.published_at.strftime('%Y/%m/%d %H:%M') if notification.published_at %></small>
+                      </div>
+                    <% end %>
+                  </li>
+                <% end %>
+              <% else %>
+                <li>
+                  <p class="text-center">通知はありません</p>
+                </li>
+              <% end %>
+            </ul>
+          </li>
           <li class="dropdown">
             <a href="#" id="account" class="dropdown-toggle">
               User <b class="caret"></b>
@@ -39,6 +66,7 @@
   </div>
   <ul class="offcanvas-mobile-list">
     <% if logged_in? %>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-bell"></i> 通知'), event_reminders_path %></li>
       <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> プロフィール'), current_user %></li>
       <li><%= link_to raw('<i class="glyphicon glyphicon-plus"></i> イベントを投稿'), new_event_path %></li>
       <li><%= link_to raw('<i class="glyphicon glyphicon-list-alt"></i> 自分のイベント'), my_events_path %></li>

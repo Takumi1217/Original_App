@@ -90,3 +90,18 @@ end
     published_at: Faker::Time.backward(days: 30, period: :evening)
   )
 end
+
+# メインユーザーのサンプルリマインダー
+user = User.find_by(email: "example@railstutorial.org")
+events = Event.all
+
+10.times do
+  event = events.sample
+  EventReminder.create!(
+    user_id: user.id,
+    event_id: event.id,
+    title: "#{event.title}の通知",
+    body: "#{event.title}が#{event.start_date.strftime('%Y年%m月%d日 %H:%M')}に開催されます。",
+    published_at: Faker::Time.backward(days: 10, period: :evening)
+  )
+end

@@ -1,42 +1,13 @@
 document.addEventListener("turbo:load", function() {
-  // ハンバーガーメニュー（レスポンシブナビゲーション用）
-  let hamburger = document.querySelector("#hamburger");
-  if (hamburger) {
-    hamburger.addEventListener("click", function(event) {
-      event.preventDefault();
-      let menu = document.querySelector("#navbar-menu");
-      menu.classList.toggle("collapse");
-    });
-  }
-
-  // アカウントドロップダウンメニュー
-  let account = document.querySelector("#account");
-  if (account) {
-    account.addEventListener("click", function(event) {
-      event.preventDefault();
-      let menu = document.querySelector("#dropdown-menu");
-      menu.classList.toggle("active");
-    });
-  }
-
-  // ドロップダウンメニュー外をクリックしたときに閉じる
-  document.addEventListener("click", function(event) {
-    let dropdownMenu = document.querySelector("#dropdown-menu");
-    let account = document.querySelector("#account");
-    if (dropdownMenu && !dropdownMenu.contains(event.target) && !account.contains(event.target)) {
-      dropdownMenu.classList.remove("active");
-    }
-  });
-
   // オフキャンバスメニューのトグル
-  let offcanvasToggle = document.querySelector("#offcanvas-toggle");
-  let offcanvasMenu = document.querySelector("#offcanvas-menu");
-  let offcanvasClose = document.querySelector("#offcanvas-close");
-
+  const offcanvasToggle = document.querySelector("#offcanvas-toggle");
+  const offcanvasMenu = document.querySelector("#offcanvas-menu");
+  const offcanvasClose = document.querySelector("#offcanvas-close");
+  
   if (offcanvasToggle) {
     offcanvasToggle.addEventListener("click", function(event) {
       event.preventDefault();
-      offcanvasMenu.classList.add("active");
+      offcanvasMenu.classList.toggle("active");
     });
   }
 
@@ -49,10 +20,32 @@ document.addEventListener("turbo:load", function() {
 
   // オフキャンバスメニュー外をクリックしたときに閉じる
   document.addEventListener("click", function(event) {
-    if (offcanvasMenu && offcanvasMenu.classList.contains("active") &&
-        !offcanvasMenu.contains(event.target) &&
-        event.target !== offcanvasToggle) {
+    if (offcanvasMenu && offcanvasMenu.classList.contains("active") && !offcanvasMenu.contains(event.target) && event.target !== offcanvasToggle) {
       offcanvasMenu.classList.remove("active");
     }
   });
+
+  // ドロップダウンメニューのトグル（アカウント・通知）
+  const toggleDropdown = (triggerSelector, menuSelector) => {
+    const trigger = document.querySelector(triggerSelector);
+    const menu = document.querySelector(menuSelector);
+
+    if (trigger) {
+      trigger.addEventListener("click", function(event) {
+        event.preventDefault();
+        menu.classList.toggle("active");
+      });
+    }
+
+    // ドロップダウンメニュー外をクリックしたときに閉じる
+    document.addEventListener("click", function(event) {
+      if (menu && !menu.contains(event.target) && !trigger.contains(event.target)) {
+        menu.classList.remove("active");
+      }
+    });
+  };
+
+  // アカウントと通知のドロップダウンに適用
+  toggleDropdown("#account", "#dropdown-menu");
+  toggleDropdown("#notification-toggle", "#notification-dropdown");
 });

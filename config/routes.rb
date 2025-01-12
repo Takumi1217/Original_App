@@ -20,5 +20,10 @@ Rails.application.routes.draw do
   get  "/search", to: "events#index"
   resources :bookmarks, only: [:index, :create, :destroy]
   get "/my_bookmarks", to: "bookmarks#index"
+  resources :event_reminders, only: [:index]
   resources :notices, only: [:index]
+
+  if Rails.env.development?
+    mount LetterOpenerWeb::Engine, at: "/letter_opener"
+  end
 end
