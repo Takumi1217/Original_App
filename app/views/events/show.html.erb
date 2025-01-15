@@ -1,16 +1,16 @@
 <h1><%= @event.title %></h1>
 
 <div class="event-details">
-  <p><strong>開始日:</strong><%= @event.start_date.strftime('%Y年%m月%d日') if @event.start_date.present? %>〜</p>
-  <p><strong>場所:</strong><%= @event.place %></p>
+  <p><i class="glyphicon glyphicon-time"></i> <%= @event.start_date.strftime('%Y年%m月%d日') if @event.start_date.present? %>〜</p>
+  <p><i class="glyphicon glyphicon-map-marker"></i> <%= @event.place %></p>
   <div class="d-flex">
-    <p><strong>最寄駅:</strong><%= @event.station %></p>
-    <p><strong>エリア:</strong><%= @event.area %></p>
-    <p><strong>カテゴリ:</strong><%= @event.category %></p>
+    <p><i class="glyphicon glyphicon-road"></i> <%= @event.station %></p>
+    <p><i class="glyphicon glyphicon-globe"></i> <%= @event.area %></p>
+    <p><i class="glyphicon glyphicon-tags"></i> <%= @event.category %></p>
   </div>
 </div>
 
-<h3>基本情報</h3>
+<h3 class="section-title">基本情報</h3>
 
 <div class="row">
   <div class="col-md-4 text-center">
@@ -19,7 +19,7 @@
         <%= image_tag @event.thumbnail, alt: 'Thumbnail', class: 'card-img-top' %>
       </div>
     <% else %>
-      <div class="thumbnail-placeholder">No Image Available</div>
+      <div class="thumbnail-placeholder">No Thumbnail Available</div>
     <% end %>
   </div>
 
@@ -50,13 +50,45 @@
   <p><%= @event.body %></p>
 </div>
 
-<h3>詳細</h3>
-<div class="event-extra-details">
-  <p><strong>場所:</strong><%= @event.place %></p>
-  <p><strong>最寄駅:</strong><%= @event.station %></p>
-  <p><strong>開催期間:</strong><%= @event.start_date %> ~ <%= @event.end_date %></p>
-  <p><strong>お問い合わせ:</strong><%= @event.contact %></p>
-  <p><strong>リンク:</strong><%= link_to @event.link, @event.link, target: '_blank' if @event.link.present? %></p>
-</div>
+<h3 class="section-title">詳細 <span class="info-subtitle">Info</span></h3>
+<hr class="section-divider">
+<div class="event-details">
+  <div class="detail-row">
+    <span class="detail-label">開催場所</span>
+    <span class="detail-content">
+      <%= @event.place %><br>
+    </span>
+  </div>
 
-<%= link_to '戻る', events_path, class: 'btn btn-secondary' %>
+  <div class="detail-row">
+    <span class="detail-label">最寄駅</span>
+    <span class="detail-content">
+      <%= @event.station %>
+    </span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">開催期間</span>
+    <span class="detail-content">
+      <%= @event.start_date %> ～ <%= @event.end_date %>
+    </span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">連絡先</span>
+    <span class="detail-content"><%= @event.contact %></span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">費用</span>
+    <span class="detail-content"><%= @event.cost %>円</span>
+  </div>
+
+  <div class="detail-row">
+    <span class="detail-label">公式サイト</span>
+    <span class="detail-content">
+      <%= link_to 'Link', @event.link, target: '_blank', class: 'link-button' if @event.link.present? %>
+    </span>
+  </div>
+  <p class="note">※掲載内容が変更となっている場合があります。最新情報については、会場・主催者の公式サイト等でご確認ください。</p>
+</div>

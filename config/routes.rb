@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   get 'password_resets/edit'
   get 'sessions/new'
   root "static_pages#home"
-  get  "/history", to: "static_pages#history"
   get  "/agreement", to: "static_pages#agreement"
   get  "/policy", to: "static_pages#policy"
   get  "/help", to: "static_pages#help"
@@ -15,7 +14,11 @@ Rails.application.routes.draw do
   resources :users
   resources :account_activations, only: [:edit]
   resources :password_resets,     only: [:new, :create, :edit, :update]
-  resources :events
+  resources :events do
+    collection do
+      get :viewed_history
+    end
+  end
   get  "/my_events", to: "events#my_events"
   get  "/search", to: "events#index"
   resources :bookmarks, only: [:index, :create, :destroy]

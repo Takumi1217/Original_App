@@ -11,7 +11,7 @@
               <% end %>
             <% else %>
               <%= link_to event_path(event) do %>
-                <div class="thumbnail-placeholder">No Image Available</div>
+                <div class="thumbnail-placeholder">No Thumbnail Available</div>
               <% end %>
             <% end %>
           </div>
@@ -37,7 +37,7 @@
               <% end %>
             <% else %>
               <%= link_to event_path(event) do %>
-                <div class="thumbnail-placeholder">No Image Available</div>
+                <div class="thumbnail-placeholder">No Thumbnail Available</div>
               <% end %>
             <% end %>
           </div>
@@ -57,7 +57,7 @@
     <% end %>
   </div>
   <div class="center-button">
-    <%= link_to 'もっと見る', search_path, class: 'btn btn-primary' %>
+    <%= link_to 'もっと見る', search_path(sort: 'rank'), class: 'btn btn-primary' %>
   </div>
 
   <h2>無料のイベント</h2>
@@ -72,7 +72,7 @@
               <% end %>
             <% else %>
               <%= link_to event_path(event) do %>
-                <div class="thumbnail-placeholder">No Image Available</div>
+                <div class="thumbnail-placeholder">No Thumbnail Available</div>
               <% end %>
             <% end %>
           </div>

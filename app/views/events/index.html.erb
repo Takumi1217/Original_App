@@ -7,6 +7,11 @@
   </div>
 <% end %>
 
+<div class="sort-tabs">
+  <%= link_to '新しい順', events_path(sort: 'new'), class: params[:sort] == 'new' || params[:sort].blank? ? 'active' : '' %>
+  <%= link_to 'ランキング順', events_path(sort: 'rank'), class: params[:sort] == 'rank' ? 'active' : '' %>
+</div>
+
 <% if @events.any? %>
   <div class="row">
     <% @events.each do |event| %>
@@ -31,20 +36,28 @@
             <h5 class="card-title"><%= link_to event.title, event_path(event) %></h5>
 
             <!-- 開始日 -->
-            <p><%= event.start_date.strftime('%Y年%m月%d日') if event.start_date.present? %>〜</p>
+            <p><i class="glyphicon glyphicon-time"></i> <%= event.start_date.strftime('%Y年%m月%d日') if event.start_date.present? %>〜</p>
 
             <!-- サムネイル -->
-            <% if event.thumbnail.attached? %>
-              <div class="thumbnail-container mb-2">
-                <%= image_tag event.thumbnail, alt: event.title, class: "img-fluid" %>
-              </div>
+            <% if event.thumbnail.present? %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
             <% else %>
-              <div class="thumbnail-placeholder mb-2">No Thumbnail Available</div>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Thumbnail Available</div>
+              <% end %>
             <% end %>
             <p><strong><%= event.catchphrase %></strong></p>
-            <p>場所:<%= event.place %></p>
-            <p>最寄駅:<%= event.station %></p>
-            <p><%= event.category %></p>
+            <%= pluralize(event.bookmarks.count, "Bookmark") %>
+            <p class="single-line">
+              <i class="glyphicon glyphicon-map-marker"></i> <%= event.place %>
+            </p>
+            <p><i class="glyphicon glyphicon-road"></i> <%= event.station %></p>
+            <p>
+              <i class="glyphicon glyphicon-tags"></i>
+              <%= link_to event.category, events_path(q: { category_eq: event.category }) %>
+            </p>
           </div>
         </div>
       </div>

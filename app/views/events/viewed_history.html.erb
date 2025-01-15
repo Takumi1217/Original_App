@@ -1,0 +1,32 @@
+<h1>閲覧履歴</h1>
+<p>(最大で15件まで表示されます)</p>
+
+<% if @viewed_events.any? %>
+  <div class="row">
+    <% @viewed_events.each do |event| %>
+      <div class="col-md-4 col-sm-6 mb-4">
+        <div class="card">
+          <div class="thumbnail-container">
+            <% if event.thumbnail.present? %>
+              <%= link_to event_path(event) do %>
+                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+              <% end %>
+            <% else %>
+              <%= link_to event_path(event) do %>
+                <div class="thumbnail-placeholder">No Thumbnail Available</div>
+              <% end %>
+            <% end %>
+          </div>
+          <div class="card-body">
+            <h5 class="card-title">
+              <%= link_to event.title, event_path(event), class: "event-title" %>
+            </h5>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+
+<% else %>
+  <p>最近閲覧したイベントはありません。</p>
+<% end %>

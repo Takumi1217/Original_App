@@ -8,21 +8,44 @@ class EventsController < ApplicationController
 
   def index
     @q = Event.ransack(params[:q])
-    @events = @q.result(distinct: true).order(created_at: :desc).paginate(page: params[:page], per_page: 30)
+    @events = @q.result(distinct: true)
+
+    if params[:sort] == 'rank'
+      @events = @events
+                 .unscope(:order)
+                 .left_joins(:bookmarks)
+                 .group('events.id')
+                 .select('events.*, COALESCE(COUNT(bookmarks.id), 0) AS bookmarks_count')
+                 .order('bookmarks_count DESC, events.created_at DESC')
+    else
+      @events = @events.order(created_at: :desc)
+    end      
+
+    @events = @events.paginate(page: params[:page], per_page: 30)
   end
-  
+
   def show
-    # @eventはset_eventで取得済み
+    store_event_in_cookies(@event.id)
   end
 
   def my_events
     @events = current_user.events.order(created_at: :desc).paginate(page: params[:page], per_page: 30)
   end
 
+  def viewed_history
+    viewed_event_ids = cookies.signed[:viewed_events] ? JSON.parse(cookies.signed[:viewed_events]) : []
+    if viewed_event_ids.any?
+      order_clause = viewed_event_ids.map.with_index { |id, index| "WHEN #{id} THEN #{index}" }.join(" ")
+      @viewed_events = Event.where(id: viewed_event_ids).order(Arel.sql("CASE id #{order_clause} END"))
+    else
+      @viewed_events = Event.none
+    end
+  end  
+
   def create
     @event = Event.new(event_params)
     @event.user_id = current_user.id
-    
+
     if @event.save
       flash[:success] = "Event created!"
       redirect_to root_url
@@ -32,7 +55,6 @@ class EventsController < ApplicationController
   end
 
   def edit
-    # @eventはset_eventで取得済み
   end
 
   def update
@@ -63,12 +85,22 @@ class EventsController < ApplicationController
     )
   end
 
-  # ログインしていない場合はログインページにリダイレクト
   def logged_in_user
     unless logged_in?
       store_location
       flash[:danger] = "Please log in."
       redirect_to login_url, status: :see_other
     end
+  end
+
+  def store_event_in_cookies(event_id)
+    viewed_events = cookies.signed[:viewed_events] ? JSON.parse(cookies.signed[:viewed_events]) : []
+    viewed_events.delete(event_id) if viewed_events.include?(event_id)
+    viewed_events.unshift(event_id)
+    viewed_events = viewed_events.first(15)
+    cookies.signed[:viewed_events] = {
+      value: JSON.generate(viewed_events),
+      expires: 7.days.from_now
+    }
   end
 end
