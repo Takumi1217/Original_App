@@ -1,4 +1,4 @@
-<h1 class="centered-title">ブックマーク</h1>
+<h1 class="centered-title"><%= t('bookmarks.title') %></h1>
 
 <% if @bookmarked_events.any? %>
   <div class="row">
@@ -19,9 +19,9 @@
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-between align-items-center">
               <%= link_to event.title, event_path(event) %>
-              <%= button_to "ブックマーク解除", bookmark_path(event.bookmarks.find_by(user_id: current_user.id)), 
+              <%= button_to t('bookmarks.remove_bookmark_button'), bookmark_path(event.bookmarks.find_by(user_id: current_user.id)), 
                              method: :delete, 
-                             data: { confirm: "本当にブックマークを解除しますか？" },
+                             data: { confirm: t('bookmarks.bookmark_remove_confirm') },
                              class: "btn btn-sm btn-danger" %>
             </h5>
           </div>
@@ -30,6 +30,8 @@
     <% end %>
   </div>
 <% else %>
-  <p>まだイベントをブックマークしていません。</p>
-  <%= link_to "イベントを探す", events_path, class: "btn btn-primary" %>
+  <p><%= t('bookmarks.no_bookmarks') %></p>
+  <div class="center-button">
+    <%= link_to t('bookmarks.find_events'), events_path, class: "btn btn-primary" %>
+  </div>
 <% end %>

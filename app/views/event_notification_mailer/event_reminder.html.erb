@@ -1,9 +1,9 @@
-<h1>イベント通知のお知らせ</h1>
-<p><%= @event.title %>のイベントは明日です！お見逃しなく！</p>
-<p>詳細:</p>
+<h1><%= t('reminder_email.title') %></h1>
+<p><%= @event.title %> <%= t('reminder_email.event_is_tomorrow') %></p>
+<p><%= t('reminder_email.details') %>:</p>
 <ul>
-  <li>開始日時: <%= @event.start_date %></li>
-  <li>場所: <%= @event.place %></li>
-  <li>カテゴリ: <%= @event.category %></li>
-  <li>詳細リンク: <%= @event.link %></li>
+  <li><%= t('reminder_email.start_date') %>: <%= @event.start_date %></li>
+  <li><%= t('reminder_email.place') %>: <%= @event.place %></li>
+  <li><%= t('reminder_email.category') %>: <%= @event.category %></li>
+  <li><%= t('reminder_email.link') %>: <%= @event.link %></li>
 </ul>

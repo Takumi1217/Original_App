@@ -1,0 +1,264 @@
+ja:
+  app_name: "Shibuya Connect"
+
+  header:
+    notifications: "通知"
+    all_notifications: "通知一覧"
+    no_notifications: "通知はありません"
+    user: "User"
+    profile: "プロフィール"
+    post_event: "イベントを投稿"
+    my_events: "自分のイベント"
+    bookmarks: "ブックマーク"
+    settings: "設定"
+    logout: "ログアウト"
+    login_signup: "ログイン／登録"
+    search: "検索"
+    viewed_history: "閲覧履歴"
+    notices: "お知らせ"
+
+  footer:
+    follow_us: "Follow Us"
+    events: "イベント"
+    area: "エリア"
+    category: "カテゴリ"
+    when: "いつ"
+    price: "値段"
+    area_links:
+      shibuya: "渋谷"
+      harajuku: "原宿"
+      aoyama: "青山"
+      hiroo: "広尾"
+      shootou: "松濤"
+      ikejiri: "池尻"
+      ebbisu: "恵比寿"
+      daikanyama: "代官山"
+      nakameguro: "中目黒"
+      omotesando: "表参道"
+    category_links:
+      gourmet: "グルメ"
+      shopping: "ショッピング"
+      experience: "体験"
+      exhibition: "展覧会"
+      onsen: "温泉"
+      subculture: "サブカルチャー"
+      travel: "旅行"
+    when_links:
+      today: "今日"
+      tomorrow: "明日"
+      this_weekend: "今週末"
+      spring: "春"
+      summer: "夏"
+      autumn: "秋"
+      winter: "冬"
+      halloween: "ハロウィン"
+      christmas: "クリスマス"
+      new_year: "お正月"
+    price_links:
+      free: "無料"
+      up_to_1000yen: "〜1,000円"
+      from_1000yen_to_5000yen: "1,000円〜5,000円"
+      from_5000yen_to_10000yen: "5,000円〜10,000円"
+      from_10000yen: "10,000円〜"
+    terms_of_service: "利用規約"
+    privacy_policy: "プライバシーポリシー"
+    help: "ヘルプ"
+    contact_us: "お問い合わせ"
+  
+  signup:
+    title: "会員登録"
+    name_label: "ユーザー名"
+    email_label: "メールアドレス"
+    password_label: "パスワード"
+    password_confirmation_label: "パスワード（確認用）"
+    submit_button: "登録"
+
+  login:
+    title: "ログイン"
+    email_label: "メールアドレス"
+    password_label: "パスワード"
+    remember_me_label: "ログイン状態を保持する"
+    submit_button: "ログイン"
+    forgot_password: "パスワードを忘れた"
+    signup: "会員登録"
+
+  password_reset:
+    title: "パスワード再設定"
+    email_label: "メールアドレス"
+    password_label: "パスワード"
+    password_confirmation_label: "パスワード（確認用）"
+    submit_button_1: "次へ"
+    submit_button_2: "再設定"
+
+  event_reminders:
+    title: "イベント通知一覧"
+    no_reminders: "通知はありません"
+
+  profile:
+    title: "プロフィール"
+    settings_button: "設定"
+
+  event_form:
+    title: "新規投稿"
+    catchphrase: "キャッチコピー"
+    thumbnail: "サムネイル / 追加画像1 / 追加画像2"
+    body: "本文"
+    start_date: "開始日時"
+    end_date: "終了日時"
+    area: "地域"
+    place: "開催場所"
+    station: "最寄駅"
+    category: "カテゴリ"
+    contact: "連絡先"
+    cost: "費用"
+    link: "リンク"
+    submit: "投稿する"
+    prompt_select: "選択してください"
+    placeholder_title: "（〜30字）"
+    placeholder_catchphrase: "（〜25字）"
+    placeholder_body: "本文（10字〜10000字）"
+    placeholder_place: "入力してください"
+    placeholder_station: "入力してください"
+    placeholder_contact: "（任意）"
+    placeholder_cost: "（半角数字）"
+    placeholder_link: "（任意）"
+
+  edit_form:
+    title: "イベント編集"
+    catchphrase: "キャッチコピー"
+    thumbnail: "サムネイル / 追加画像1 / 追加画像2"
+    body: "本文"
+    start_date: "開始日時"
+    end_date: "終了日時"
+    area: "地域"
+    place: "開催場所"
+    station: "最寄駅"
+    category: "カテゴリ"
+    contact: "連絡先"
+    cost: "費用"
+    link: "リンク"
+    submit: "更新する"
+    prompt_select: "選択してください"
+    placeholder_title: "（〜30字）"
+    placeholder_catchphrase: "（〜25字）"
+    placeholder_body: "本文（10字〜10000字）"
+    placeholder_place: "入力してください"
+    placeholder_station: "入力してください"
+    placeholder_contact: "（任意）"
+    placeholder_cost: "（半角数字）"
+    placeholder_link: "（任意）"
+
+  my_events:
+    title: "自分のイベント"
+    no_events: "まだイベントを投稿していません。"
+    new_event_button: "新しいイベントを投稿する"
+    edit_button: "編集"
+    delete_button: "削除"
+    delete_confirm: "本当に削除しますか？"
+
+  bookmarks:
+    title: "ブックマーク"
+    no_bookmarks: "まだイベントをブックマークしていません。"
+    find_events: "イベントを探す"
+    bookmark_remove_confirm: "本当にブックマークを解除しますか？"
+    remove_bookmark_button: "ブックマーク解除"
+
+  settings:
+    title: "設定"
+    name_label: "ユーザー名"
+    email_label: "メールアドレス"
+    password_label: "パスワード"
+    password_confirmation_label: "パスワード（確認用）"
+    submit_button: "変更"
+    gravatar_link: "変更"
+
+  home:
+    top_banner: "homepage_jp.png"
+    pick_up: "ピックアップ"
+    popular_events: "人気のイベント"
+    free_events: "無料のイベント"
+    view_more: "もっと見る"
+
+  show:
+    info: "基本情報"
+    more: "詳細"
+    start_date: "開始日時"
+    place: "開催場所"
+    station: "最寄駅"
+    area: "地域"
+    category: "カテゴリ"
+    catchphrase: "キャッチコピー"
+    body: "本文"
+    link: "公式サイト"
+    cost: "費用"
+    contact: "連絡先"
+    thumbnail: "サムネイル"
+    image_1: "追加画像1"
+    image_2: "追加画像2"
+    event_period: "開催期間"
+    info_note: "※掲載内容が変更となっている場合があります。最新情報については、会場・主催者の公式サイト等でご確認ください。"
+
+  Index:
+    new_events: "新着イベント"
+    search_placeholder: "キーワードから絞り込む"
+    search_button: "検索"
+    sort_new: "新しい順"
+    sort_rank: "ランキング順"
+    bookmark_add: "ブックマーク"
+    bookmark_remove: "ブックマーク解除"
+    catchphrase: "キャッチフレーズ"
+    bookmarks_count: "%{count} 件のブックマーク"
+    no_events: "該当するイベントは見つかりませんでした。"
+
+  viewed_history:
+    title: "閲覧履歴"
+    max_items: "(最大で15件まで表示されます)"
+    no_events: "最近閲覧したイベントはありません。"
+
+  notices:
+    title: "お知らせ"
+
+  agreement:
+    title: "利用規約"
+
+  policy:
+    title: "プライバシーポリシー"
+
+  help:
+    title: "ヘルプ"
+
+  contact:
+    title: "お問い合わせ"
+
+  welcome_email:
+    greeting: "こんにちは、%{name}さん"
+    introduction: "Shibuya Connectへようこそ！以下のリンクをクリックして、アカウントを有効化してください。"
+    activate: "有効化"
+
+  account_activation:
+    welcome: "こんにちは、<%= name %>さん！"
+    message: "以下のリンクをクリックして、アカウントを有効化してください。"
+
+  reset_email:
+    title: "パスワードリセット"
+    instruction: "パスワードをリセットするには、以下のリンクをクリックしてください："
+    reset_link: "パスワードをリセット"
+    expiry: "このリンクは2時間で期限切れになります。"
+    ignore_if_not_requested: "もしあなたがパスワードリセットをリクエストしていない場合は、このメールを無視してください。パスワードはそのままになります。"
+
+  reset_text:
+    instruction: "パスワードをリセットするには、以下のリンクをクリックしてください。"
+    expiry: "このリンクは2時間後に期限切れになります。"
+    no_request: "もしパスワードリセットを依頼していない場合は、このメールを無視してください。"
+
+  reminder_email:
+    title: "イベント通知のお知らせ"
+    event_is_tomorrow: "のイベントは明日です！お見逃しなく！"
+    details: "詳細"
+    start_date: "開始日時"
+    place: "場所"
+    category: "カテゴリ"
+    link: "詳細リンク"
+
+  errors:
+    form_contains: "フォームに%{count}件のエラーがあります"

@@ -1,9 +1,16 @@
 <header class="navbar navbar-fixed-top navbar-inverse">
   <div class="container">
-    <%= link_to "Original App", root_path, id: "logo" %>
+    <%= link_to t('app_name'), root_path, id: "logo" %>
     <nav>
       <ul class="nav navbar-nav navbar-right">
-        <li><%= link_to "EN", '#' %></li>
+        <li>
+          <% if I18n.locale == :ja %>
+            <%= link_to "EN", url_for(locale: :en) %>
+          <% else %>
+            <%= link_to "JA", url_for(locale: :ja) %>
+          <% end %>
+        </li>
+
         <% if logged_in? %>
           <li id="notification-icon">
             <a href="#" id="notification-toggle">
@@ -11,8 +18,8 @@
             </a>
             <ul id="notification-dropdown" class="dropdown-menu">
               <li class="dropdown-header">
-                <strong>通知</strong>
-                <%= link_to '通知一覧', event_reminders_path, class: 'pull-right' %>
+                <strong><%= t('header.notifications') %></strong>
+                <%= link_to t('header.all_notifications'), event_reminders_path, class: 'pull-right' %>
               </li>
               <% if @notifications.any? %>
                 <% @notifications.each do |notification| %>
@@ -28,26 +35,26 @@
                 <% end %>
               <% else %>
                 <li>
-                  <p class="text-center">通知はありません</p>
+                  <p class="text-center"><%= t('header.no_notifications') %></p>
                 </li>
               <% end %>
             </ul>
           </li>
           <li class="dropdown">
             <a href="#" id="account" class="dropdown-toggle">
-              User <b class="caret"></b>
+              <%= t('header.user') %> <b class="caret"></b>
             </a>
-          <ul id="dropdown-menu" class="dropdown-menu">
-            <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> プロフィール'), current_user %></li>
-            <li><%= link_to raw('<i class="glyphicon glyphicon-plus"></i> イベントを投稿'), new_event_path %></li>
-            <li><%= link_to raw('<i class="glyphicon glyphicon-list-alt"></i> 自分のイベント'), my_events_path %></li>
-            <li><%= link_to raw('<i class="glyphicon glyphicon-bookmark"></i> ブックマーク'), my_bookmarks_path %></li>
-            <li><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> 設定'), edit_user_path(current_user) %></li>
-            <li><%= link_to raw('<i class="glyphicon glyphicon-log-out"></i> ログアウト'), logout_path, data: { "turbo-method": :delete } %></li>
-          </ul>
+            <ul id="dropdown-menu" class="dropdown-menu">
+              <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> ') + t('header.profile'), current_user %></li>
+              <li><%= link_to raw('<i class="glyphicon glyphicon-plus"></i> ') + t('header.post_event'), new_event_path %></li>
+              <li><%= link_to raw('<i class="glyphicon glyphicon-list-alt"></i> ') + t('header.my_events'), my_events_path %></li>
+              <li><%= link_to raw('<i class="glyphicon glyphicon-bookmark"></i> ') + t('header.bookmarks'), my_bookmarks_path %></li>
+              <li><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> ') + t('header.settings'), edit_user_path(current_user) %></li>
+              <li><%= link_to raw('<i class="glyphicon glyphicon-log-out"></i> ') + t('header.logout'), logout_path, data: { "turbo-method": :delete } %></li>
+            </ul>
           </li>
         <% else %>
-          <li><%= link_to "ログイン／登録", login_path %></li>
+          <li><%= link_to t('header.login_signup'), login_path %></li>
         <% end %>
         <li>
           <a href="#" id="offcanvas-toggle">
@@ -66,20 +73,20 @@
   </div>
   <ul class="offcanvas-mobile-list">
     <% if logged_in? %>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-bell"></i> 通知'), event_reminders_path %></li>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> プロフィール'), current_user %></li>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-plus"></i> イベントを投稿'), new_event_path %></li>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-list-alt"></i> 自分のイベント'), my_events_path %></li>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-bookmark"></i> ブックマーク'), my_bookmarks_path %></li>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> 設定'), edit_user_path(current_user) %></li>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-log-out"></i> ログアウト'), logout_path, data: { "turbo-method": :delete } %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-bell"></i> ') + t('header.notifications'), event_reminders_path %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> ') + t('header.profile'), current_user %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-plus"></i> ') + t('header.post_event'), new_event_path %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-list-alt"></i> ') + t('header.my_events'), my_events_path %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-bookmark"></i> ') + t('header.bookmarks'), my_bookmarks_path %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-cog"></i> ') + t('header.settings'), edit_user_path(current_user) %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-log-out"></i> ') + t('header.logout'), logout_path, data: { "turbo-method": :delete } %></li>
     <% else %>
-      <li><%= link_to raw('<i class="glyphicon glyphicon-log-in"></i> ログイン／登録'), login_path %></li>
+      <li><%= link_to raw('<i class="glyphicon glyphicon-log-in"></i> ') + t('header.login_signup'), login_path %></li>
     <% end %>
   </ul>
   <ul class="offcanvas-list">
-    <li><%= link_to raw('<i class="glyphicon glyphicon-search"></i> 検索'), search_path %></li>
-    <li><%= link_to raw('<i class="glyphicon glyphicon-time"></i> 閲覧履歴'), viewed_history_events_path %></li>
-    <li><%= link_to raw('<i class="glyphicon glyphicon glyphicon-info-sign"></i> お知らせ'), notices_path %></li>
+    <li><%= link_to raw('<i class="glyphicon glyphicon-search"></i> ') + t('header.search'), search_path %></li>
+    <li><%= link_to raw('<i class="glyphicon glyphicon-time"></i> ') + t('header.viewed_history'), viewed_history_events_path %></li>
+    <li><%= link_to raw('<i class="glyphicon glyphicon-info-sign"></i> ') + t('header.notices'), notices_path %></li>
   </ul>
 </aside>

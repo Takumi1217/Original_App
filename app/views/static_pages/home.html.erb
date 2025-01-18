@@ -1,5 +1,9 @@
+<% content_for :top_banner do %>
+  <%= image_tag I18n.t('home.top_banner'), class: 'top-banner' %>
+<% end %>
+
 <div class="center jumbotron">
-  <h2>ピックアップ</h2>
+  <h2><%= t('home.pick_up') %></h2>
   <div class="row">
     <% @events.each do |event| %>
       <div class="col-md-4 col-sm-6 mb-4">
@@ -25,7 +29,7 @@
     <% end %>
   </div>
 
-  <h2>人気のイベント</h2>
+  <h2><%= t('home.popular_events') %></h2>
   <div class="row">
     <% @popular_events.each do |event| %>
       <div class="col-md-4 col-sm-6 mb-4">
@@ -57,10 +61,10 @@
     <% end %>
   </div>
   <div class="center-button">
-    <%= link_to 'もっと見る', search_path(sort: 'rank'), class: 'btn btn-primary' %>
+    <%= link_to t('home.view_more'), search_path(sort: 'rank'), class: 'btn btn-primary' %>
   </div>
 
-  <h2>無料のイベント</h2>
+  <h2><%= t('home.free_events') %></h2>
   <div class="row">
     <% @free_events.each do |event| %>
       <div class="col-md-4 col-sm-6 mb-4">
@@ -89,6 +93,6 @@
     <% end %>
   </div>
   <div class="center-button">
-    <%= link_to 'もっと見る', events_path(q: { cost_eq: '0' }), class: 'btn btn-primary' %>
+    <%= link_to t('home.view_more'), events_path(q: { cost_eq: '0' }), class: 'btn btn-primary' %>
   </div>
 </div>

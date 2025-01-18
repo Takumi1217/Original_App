@@ -1,4 +1,4 @@
-<h1 class="centered-title">自分のイベント</h1>
+<h1 class="centered-title"><%= t('my_events.title') %></h1>
 
 <% if @events.any? %>
   <div class="row">
@@ -20,8 +20,8 @@
             <h5 class="card-title d-flex justify-content-between align-items-center">
               <span class="event-title"><%= link_to event.title, event_path(event) %></span>
               <div class="event-actions">
-                <%= link_to "編集", edit_event_path(event), class: "btn btn-sm btn-edit" %>
-                <%= button_to "削除", event_path(event), method: :delete, data: { confirm: "本当に削除しますか？" }, class: "btn btn-sm btn-delete" %>
+                <%= link_to t('my_events.edit_button'), edit_event_path(event), class: "btn btn-sm btn-edit" %>
+                <%= button_to t('my_events.delete_button'), event_path(event), method: :delete, data: { confirm: t('my_events.delete_confirm') }, class: "btn btn-sm btn-delete" %>
               </div>
             </h5>
           </div>
@@ -35,8 +35,8 @@
   </div>
 
 <% else %>
-  <p>まだイベントを投稿していません。</p>
+  <p><%= t('my_events.no_events') %></p>
   <div class="center-button">
-    <%= link_to "新しいイベントを投稿する", new_event_path, class: "btn btn-primary" %>
+    <%= link_to t('my_events.new_event_button'), new_event_path, class: "btn btn-primary" %>
   </div>
 <% end %>

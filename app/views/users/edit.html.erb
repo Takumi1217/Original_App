@@ -1,29 +1,29 @@
-<% provide(:title, "Setting") %>
-<h1 class="centered-title">設定</h1>
+<% provide(:title, t('settings.title')) %>
+<h1 class="centered-title"><%= t('settings.title') %></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
     <div class="gravatar_edit">
       <%= gravatar_for @user %>
-      <a href="https://gravatar.com/emails" target="_blank">変更</a>
+      <a href="https://gravatar.com/emails" target="_blank"><%= t('settings.gravatar_link') %></a>
     </div>
     <%= form_with(model: @user) do |f| %>
       <%= render 'shared/error_messages' %>
 
-      <%= f.label :ユーザー名 %>
+      <%= f.label :name, t('settings.name_label') %>
       <%= f.text_field :name, class: 'form-control' %>
 
-      <%= f.label :メールアドレス %>
+      <%= f.label :email, t('settings.email_label') %>
       <%= f.email_field :email, class: 'form-control' %>
 
-      <%= f.label :パスワード %>
+      <%= f.label :password, t('settings.password_label') %>
       <%= f.password_field :password, class: 'form-control' %>
 
-      <%= f.label :password_confirmation, "パスワード（確認用）" %>
+      <%= f.label :password_confirmation, t('settings.password_confirmation_label') %>
       <%= f.password_field :password_confirmation, class: 'form-control' %>
 
       <div class="center-button">
-        <%= f.submit "変更", class: "btn btn-primary" %>
+        <%= f.submit t('settings.submit_button'), class: "btn btn-primary" %>
       </div>
     <% end %>
   </div>

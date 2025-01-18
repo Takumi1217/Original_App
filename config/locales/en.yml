@@ -1,33 +1,264 @@
-# Files in the config/locales directory are used for internationalization
-# and are automatically loaded by Rails. If you want to use locales other
-# than English, add the necessary files in this directory.
-#
-# To use the locales, use `I18n.t`:
-#
-#     I18n.t "hello"
-#
-# In views, this is aliased to just `t`:
-#
-#     <%= t("hello") %>
-#
-# To use a different locale, set it with `I18n.locale`:
-#
-#     I18n.locale = :es
-#
-# This would use the information in config/locales/es.yml.
-#
-# The following keys must be escaped otherwise they will not be retrieved by
-# the default I18n backend:
-#
-# true, false, on, off, yes, no
-#
-# Instead, surround them with single quotes.
-#
-# en:
-#   "true": "foo"
-#
-# To learn more, please read the Rails Internationalization guide
-# available at https://guides.rubyonrails.org/i18n.html.
-
 en:
-  hello: "Hello world"
+  app_name: "Shibuya Connect"
+
+  header:
+    notifications: "Notifications"
+    all_notifications: "All Notifications"
+    no_notifications: "No notifications"
+    user: "User"
+    profile: "Profile"
+    post_event: "Post Event"
+    my_events: "My Events"
+    bookmarks: "Bookmarks"
+    settings: "Settings"
+    logout: "Logout"
+    login_signup: "Login / Sign Up"
+    search: "Search"
+    viewed_history: "Viewed History"
+    notices: "Notices"
+
+  footer:
+    follow_us: "Follow Us"
+    events: "Events"
+    area: "Area"
+    category: "Category"
+    when: "When"
+    price: "Price"
+    area_links:
+      shibuya: "Shibuya"
+      harajuku: "Harajuku"
+      aoyama: "Aoyama"
+      hiroo: "Hiroo"
+      shootou: "Shootou"
+      ikejiri: "Ikejiri"
+      ebbisu: "Ebisu"
+      daikanyama: "Daikanyama"
+      nakameguro: "Nakameguro"
+      omotesando: "Omotesando"
+    category_links:
+      gourmet: "Gourmet"
+      shopping: "Shopping"
+      experience: "Experience"
+      exhibition: "Exhibition"
+      onsen: "Onsen"
+      subculture: "Subculture"
+      travel: "Travel"
+    when_links:
+      today: "Today"
+      tomorrow: "Tomorrow"
+      this_weekend: "This Weekend"
+      spring: "Spring"
+      summer: "Summer"
+      autumn: "Autumn"
+      winter: "Winter"
+      halloween: "Halloween"
+      christmas: "Christmas"
+      new_year: "New Year's Day"
+    price_links:
+      free: "Free"
+      up_to_1000yen: "Up to ¥1,000"
+      from_1000yen_to_5000yen: "From ¥1,000 to ¥5,000"
+      from_5000yen_to_10000yen: "From ¥5,000 to ¥10,000"
+      from_10000yen: "From ¥10,000"
+    terms_of_service: "Agreement"
+    privacy_policy: "Privacy Policy"
+    help: "Help"
+    contact_us: "Contact"
+
+  signup:
+    title: "Sign Up"
+    name_label: "Name"
+    email_label: "Email Address"
+    password_label: "Password"
+    password_confirmation_label: "Password (Confirmation)"
+    submit_button: "Sign Up"
+
+  login:
+    title: "Login"
+    email_label: "Email Address"
+    password_label: "Password"
+    remember_me_label: "Remember me"
+    submit_button: "Login"
+    forgot_password: "Forgot Password"
+    signup: "Sign up"
+
+  password_reset:
+    title: "Reset Password"
+    email_label: "Email Address"
+    password_label: "Password"
+    password_confirmation_label: "Password (Confirmation)"
+    submit_button_1: "Next"
+    submit_button_2: "Reset"
+
+  event_reminders:
+    title: "Event Notifications"
+    no_reminders: "No reminders available"
+
+  profile:
+    title: "Profile"
+    settings_button: "Settings"
+
+  event_form:
+    title: "New Post"
+    catchphrase: "Catchphrase"
+    thumbnail: "Thumbnail / Additional Image 1 / Additional Image 2"
+    body: "Body"
+    start_date: "Start Date"
+    end_date: "End Date"
+    area: "Area"
+    place: "Place"
+    station: "Nearest Station"
+    category: "Category"
+    contact: "Contact"
+    cost: "Cost"
+    link: "Link"
+    submit: "Post"
+    prompt_select: "Please select"
+    placeholder_title: "(~30 characters)"
+    placeholder_catchphrase: "(~25 characters)"
+    placeholder_body: "Body (~10 to 10000 characters)"
+    placeholder_place: "Enter here"
+    placeholder_station: "Enter here"
+    placeholder_contact: "(optional)"
+    placeholder_cost: "(half-width numbers)"
+    placeholder_link: "(optional)"
+
+  edit_form:
+    title: "Edit Post"
+    catchphrase: "Catchphrase"
+    thumbnail: "Thumbnail / Additional Image 1 / Additional Image 2"
+    body: "Body"
+    start_date: "Start Date"
+    end_date: "End Date"
+    area: "Area"
+    place: "Place"
+    station: "Nearest Station"
+    category: "Category"
+    contact: "Contact"
+    cost: "Cost"
+    link: "Link"
+    submit: "Update"
+    prompt_select: "Please select"
+    placeholder_title: "(~30 characters)"
+    placeholder_catchphrase: "(~25 characters)"
+    placeholder_body: "Body (~10 to 10000 characters)"
+    placeholder_place: "Enter here"
+    placeholder_station: "Enter here"
+    placeholder_contact: "(optional)"
+    placeholder_cost: "(half-width numbers)"
+    placeholder_link: "(optional)"
+
+  my_events:
+    title: "My Events"
+    no_events: "You haven't posted any events yet."
+    new_event_button: "Post a New Event"
+    edit_button: "Edit"
+    delete_button: "Delete"
+    delete_confirm: "Are you sure you want to delete this event?"
+
+  bookmarks:
+    title: "Bookmarks"
+    no_bookmarks: "You haven't bookmarked any events yet."
+    find_events: "Find Events"
+    bookmark_remove_confirm: "Are you sure you want to remove this bookmark?"
+    remove_bookmark_button: "Remove Bookmark"
+
+  settings:
+    title: "Settings"
+    name_label: "Name"
+    email_label: "Email Address"
+    password_label: "Password"
+    password_confirmation_label: "Password (Confirmation)"
+    submit_button: "Update"
+    gravatar_link: "Change"
+
+  home:
+    top_banner: "homepage_en.png"
+    pick_up: "Pick Up"
+    popular_events: "Popular Events"
+    free_events: "Free Events"
+    view_more: "View More"
+
+  show:
+    info: "Basic Information"
+    more: "More Information"
+    start_date: "Start Date"
+    place: "Place"
+    station: "Nearest Station"
+    area: "Area"
+    category: "Category"
+    catchphrase: "Catchphrase"
+    body: "Body"
+    link: "Official Site"
+    cost: "Cost"
+    contact: "Contact"
+    thumbnail: "Thumbnail"
+    image_1: "Additional Image 1"
+    image_2: "Additional Image 2"
+    event_period: "Event Period"
+    info_note: "※ The details might have changed. Please check the latest information on the official website or with the organizer."
+
+  Index:
+    new_events: "New Events"
+    search_placeholder: "Refine by keyword"
+    search_button: "Search"
+    sort_new: "Newest First"
+    sort_rank: "Ranking"
+    bookmark_add: "Bookmark"
+    bookmark_remove: "Remove Bookmark"
+    catchphrase: "Catchphrase"
+    bookmarks_count: "%{count} Bookmarks"
+    no_events: "No events found."
+
+  viewed_history:
+    title: "Viewing History"
+    max_items: "(Up to 15 items will be displayed)"
+    no_events: "No events viewed recently."
+
+  notices:
+    title: "Notices"
+
+  agreement:
+    title: "Agreement"
+
+  policy:
+    title: "Privacy Policy"
+
+  help:
+    title: "Help"
+
+  contact:
+    title: "Contact"
+
+  welcome_email:
+    greeting: "Hi %{name},"
+    introduction: "Welcome to Shibuya Connect! Click on the link below to activate your account:"
+    activate: "Activate"
+
+  account_activation:
+    welcome: "Hi, <%= name %>!"
+    message: "Click on the link below to activate your account:"
+
+  reset_email:
+    title: "Password Reset"
+    instruction: "To reset your password click the link below:"
+    reset_link: "Reset password"
+    expiry: "This link will expire in two hours."
+    ignore_if_not_requested: "If you did not request your password to be reset, please ignore this email and your password will stay as it is."
+
+  reset_text:
+    instruction: "To reset your password, click the link below:"
+    expiry: "This link will expire in two hours."
+    no_request: "If you did not request your password to be reset, please ignore this email and your password will stay as it is."
+
+  reminder_email:
+    title: "Event Reminder"
+    event_is_tomorrow: " event is tomorrow! Don't miss it!"
+    details: "Details"
+    start_date: "Start Date"
+    place: "Place"
+    category: "Category"
+    link: "Detail Link"
+
+  errors:
+    form_contains: "The form contains %{count} error(s)"

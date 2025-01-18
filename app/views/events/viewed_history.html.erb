@@ -1,5 +1,5 @@
-<h1>閲覧履歴</h1>
-<p>(最大で15件まで表示されます)</p>
+<h1><%= t('viewed_history.title') %></h1>
+<p><%= t('viewed_history.max_items') %></p>
 
 <% if @viewed_events.any? %>
   <div class="row">
@@ -28,5 +28,5 @@
   </div>
 
 <% else %>
-  <p>最近閲覧したイベントはありません。</p>
+  <p><%= t('viewed_history.no_events') %></p>
 <% end %>

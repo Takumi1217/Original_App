@@ -1,12 +1,16 @@
-<h1>イベント通知一覧</h1>
+<h1><%= t('event_reminders.title') %></h1>
 <div class="center jumbotron">
-<ul>
-  <% @event_reminders.each do |event_reminder| %>
-    <li>
-      <h3><%= event_reminder.title %></h3>
-      <p><%= event_reminder.body %></p>
-      <p><%= event_reminder.published_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
-    </li>
+  <% if @event_reminders.any? %>
+    <ul>
+      <% @event_reminders.each do |event_reminder| %>
+        <li>
+          <h3><%= event_reminder.title %></h3>
+          <p><%= event_reminder.body %></p>
+          <p><%= event_reminder.published_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+        </li>
+      <% end %>
+    </ul>
+  <% else %>
+    <p><%= t('event_reminders.no_reminders') %></p>
   <% end %>
-</ul>
 </div>

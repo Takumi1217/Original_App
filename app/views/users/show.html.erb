@@ -1,5 +1,5 @@
 <% provide(:title, @user.name) %>
-<h1 class="centered-title">プロフィール</h1>
+<h1 class="centered-title"><%= t('profile.title') %></h1>
 
 <div class="row">
   <div class="col-md-6 col-md-offset-3">
@@ -13,7 +13,7 @@
       </h3>
     </div>
     <div class="center-button">
-      <%= link_to '設定', edit_user_path, class: 'btn btn-primary' %>
+      <%= link_to t('profile.settings_button'), edit_user_path, class: 'btn btn-primary' %>
     </div>
   </div>
 </div>

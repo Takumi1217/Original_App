@@ -1,5 +1,4 @@
-Hi <%= @user.name %>,
+<%= t('account_activation.welcome', name: @user.name) %>
 
-Welcome to the Original App! Click on the link below to activate your account:
-
-<%= edit_account_activation_url(@user.activation_token, email: @user.email) %>
+<%= t('account_activation.message') %>
+<%= edit_account_activation_url(id: @user.activation_token, email: @user.email) %>

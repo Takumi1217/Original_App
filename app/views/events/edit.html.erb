@@ -1,4 +1,4 @@
-<h1 class="centered-title">イベント編集</h1>
+<h1 class="centered-title"><%= t('edit_form.title') %></h1>
 
 <div class="event-form">
   <%= form_with(model: @event, local: true) do |form| %>
@@ -14,17 +14,17 @@
     <% end %>
 
     <div class="form-group">
-      <%= form.label :title, "タイトル" %>
-      <%= form.text_field :title, class: "form-control", placeholder: "（〜30字）" %>
+      <%= form.label :title, t('edit_form.title') %>
+      <%= form.text_field :title, class: "form-control", placeholder: t('edit_form.placeholder_title') %>
     </div>
 
     <div class="form-group">
-      <%= form.label :catchphrase, "キャッチコピー" %>
-      <%= form.text_field :catchphrase, class: "form-control", placeholder: "（〜25字）" %>
+      <%= form.label :catchphrase, t('edit_form.catchphrase') %>
+      <%= form.text_field :catchphrase, class: "form-control", placeholder: t('edit_form.placeholder_catchphrase') %>
     </div>
 
     <div class="form-group">
-      <label>サムネイル / 追加画像1 / 追加画像2</label>
+      <label><%= t('edit_form.thumbnail') %></label>
       <div class="image-upload">
         <div class="image-preview" id="thumbnail-preview">
           <%= form.file_field :thumbnail, direct_upload: true, id: 'thumbnail-input', style: "display: none;" %>
@@ -42,12 +42,12 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :body, "本文" %>
-      <%= form.text_area :body, class: "form-control", placeholder: "本文（10字〜10000字）" %>
+      <%= form.label :body, t('edit_form.body') %>
+      <%= form.text_area :body, class: "form-control", placeholder: t('edit_form.placeholder_body') %>
     </div>
 
     <div class="form-group datetime-select">
-      <%= form.label :start_date, "開始日時" %>
+      <%= form.label :start_date, t('edit_form.start_date') %>
       <div class="datetime-fields">
         <%= form.date_select :start_date, { order: [:year, :month, :day] }, { class: "form-control" } %>
         <%= form.time_select :start_date, { order: [:hour, :minute] }, { class: "form-control" } %>
@@ -55,7 +55,7 @@
     </div>
 
     <div class="form-group datetime-select">
-      <%= form.label :end_date, "終了日時" %>
+      <%= form.label :end_date, t('edit_form.end_date') %>
       <div class="datetime-fields">
         <%= form.date_select :end_date, { order: [:year, :month, :day] }, { class: "form-control" } %>
         <%= form.time_select :end_date, { order: [:hour, :minute] }, { class: "form-control" } %>
@@ -63,41 +63,40 @@
     </div>
 
     <div class="form-group">
-      <%= form.label :area, "地域" %>
-      <%= form.select :area, [['渋谷', '渋谷'], ['原宿', '原宿'], ['青山', '青山'], ['広尾', '広尾'], ['松濤', '松濤'], ['池尻', '池尻'], ['恵比寿', '恵比寿'], ['代官山', '代官山'], ['中目黒', '中目黒'], ['表参道', '表参道']], { prompt: '選択してください' }, class: "form-control" %>
+      <%= form.label :area, t('edit_form.area') %>
+      <%= form.select :area, [['渋谷', '渋谷'], ['原宿', '原宿'], ['青山', '青山'], ['広尾', '広尾'], ['松濤', '松濤'], ['池尻', '池尻'], ['恵比寿', '恵比寿'], ['代官山', '代官山'], ['中目黒', '中目黒'], ['表参道', '表参道']], { prompt: t('edit_form.prompt_select') }, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= form.label :place, "開催場所" %>
-      <%= form.text_field :place, class: "form-control", placeholder: "入力してください" %>
+      <%= form.label :place, t('edit_form.place') %>
+      <%= form.text_field :place, class: "form-control", placeholder: t('edit_form.placeholder_place') %>
     </div>
 
     <div class="form-group">
-      <%= form.label :station, "最寄駅" %>
-      <%= form.text_field :station, class: "form-control", placeholder: "入力してください" %>
+      <%= form.label :station, t('edit_form.station') %>
+      <%= form.text_field :station, class: "form-control", placeholder: t('edit_form.placeholder_station') %>
     </div>
 
     <div class="form-group">
-      <%= form.label :category, "カテゴリ" %>
-      <%= form.select :category, [['グルメ', 'グルメ'], ['ショッピング', 'ショッピング'], ['体験', '体験'], ['展覧会', '展覧会'], ['温泉', '温泉'], ['サブカルチャー', 'サブカルチャー'], ['観光・旅行', '観光・旅行']], { prompt: '選択してください' }, class: "form-control" %>
+      <%= form.label :category, t('edit_form.category') %>
+      <%= form.select :category, [['グルメ', 'グルメ'], ['ショッピング', 'ショッピング'], ['体験', '体験'], ['展覧会', '展覧会'], ['温泉', '温泉'], ['サブカルチャー', 'サブカルチャー'], ['観光・旅行', '観光・旅行']], { prompt: t('edit_form.prompt_select') }, class: "form-control" %>
     </div>
 
     <div class="form-group">
-      <%= form.label :contact, "連絡先" %>
-      <%= form.text_field :contact, class: "form-control", placeholder: "（任意）" %>
+      <%= form.label :contact, t('edit_form.contact') %>
+      <%= form.text_field :contact, class: "form-control", placeholder: t('edit_form.placeholder_contact') %>
     </div>
 
     <div class="form-group">
-      <%= form.label :cost, "費用" %>
-      <%= form.text_field :cost, class: "form-control", placeholder: "（半角数字）" %>
+      <%= form.label :cost, t('edit_form.cost') %>
+      <%= form.text_field :cost, class: "form-control", placeholder: t('edit_form.placeholder_cost') %>
     </div>
 
     <div class="form-group">
-      <%= form.label :link, "リンク" %>
-      <%= form.url_field :link, class: "form-control", placeholder: "（任意）" %>
+      <%= form.label :link, t('edit_form.link') %>
+      <%= form.url_field :link, class: "form-control", placeholder: t('edit_form.placeholder_link') %>
     </div>
 
-    <%= form.submit "更新する", class: "btn btn-submit" %>
-
+    <%= form.submit t('edit_form.submit'), class: "btn btn-submit" %>
   <% end %>
 </div>
