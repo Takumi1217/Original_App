@@ -108,6 +108,23 @@ a {
   }
 }
 
+/* ブックマークボタン */
+.btn-bookmark {
+  background-color: #4FB4D8;
+  border-color: #4FB4D8;
+  color: white;
+
+  .glyphicon {
+    color: white;
+  }
+
+  &:active, &:focus {
+    background-color: #4FB4D8;
+    border-color: #4FB4D8;
+    color: white;
+  }
+}
+
 /* チェックボックス */
 .checkbox {
   margin-top: -10px;
@@ -211,6 +228,10 @@ a {
 .offcanvas-mobile-list li a i {
   margin-right: 15px;
   font-size: 15px;
+}
+
+.offcanvas-list {
+  margin-bottom: 50px;
 }
 
 @media (max-width: 768px) {
@@ -536,40 +557,6 @@ a {
   text-align: center;
 }
 
-.event-images .col-md-4 {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin-bottom: 10px;
-}
-
-.event-images .thumbnail-container {
-  margin-top: 15px;
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  overflow: hidden;
-  position: relative;
-
-  img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center;
-  }
-}
-
-.event-images .thumbnail-placeholder {
-  width: 100%;
-  aspect-ratio: 3 / 2;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #ccc;
-  font-size: 14px;
-  color: #666;
-  text-align: center;
-}
-
 /* 自分のイベント・ブックマーク */
 .event-title {
   color: #000;
@@ -860,6 +847,10 @@ a {
   overflow: hidden;
   text-overflow: ellipsis;
   display: block;
+}
+
+.card {
+  margin-bottom: 30px;
 }
 
 /* イベント詳細 */

@@ -18,11 +18,13 @@
           </div>
           <div class="card-body">
             <h5 class="card-title d-flex justify-content-between align-items-center">
-              <%= link_to event.title, event_path(event) %>
-              <%= button_to t('bookmarks.remove_bookmark_button'), bookmark_path(event.bookmarks.find_by(user_id: current_user.id)), 
-                             method: :delete, 
-                             data: { confirm: t('bookmarks.bookmark_remove_confirm') },
-                             class: "btn btn-sm btn-danger" %>
+              <span class="event-title"><%= link_to event.title, event_path(event) %></span>
+              <%= button_to bookmark_path(event.bookmarks.find_by(user_id: current_user.id)), 
+                            method: :delete, 
+                            data: { confirm: t('bookmarks.bookmark_remove_confirm') },
+                            class: "btn btn-sm btn-danger" do %>
+                <i class="glyphicon glyphicon-bookmark"></i>
+              <% end %>
             </h5>
           </div>
         </div>

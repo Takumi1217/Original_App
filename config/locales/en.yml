@@ -31,7 +31,7 @@ en:
       hiroo: "Hiroo"
       shootou: "Shootou"
       ikejiri: "Ikejiri"
-      ebbisu: "Ebisu"
+      ebisu: "Ebisu"
       daikanyama: "Daikanyama"
       nakameguro: "Nakameguro"
       omotesando: "Omotesando"
@@ -42,7 +42,7 @@ en:
       exhibition: "Exhibition"
       onsen: "Onsen"
       subculture: "Subculture"
-      travel: "Travel"
+      sightseeing: "Sightseeing"
     when_links:
       today: "Today"
       tomorrow: "Tomorrow"
@@ -148,6 +148,27 @@ en:
     placeholder_cost: "(half-width numbers)"
     placeholder_link: "(optional)"
 
+  areas:
+    shibuya: "Shibuya"
+    harajuku: "Harajuku"
+    aoyama: "Aoyama"
+    hiroo: "Hiroo"
+    shoto: "Shoto"
+    ikejiri: "Ikejiri"
+    ebisu: "Ebisu"
+    daikanyama: "Daikanyama"
+    nakameguro: "Nakameguro"
+    omotesando: "Omotesando"
+
+  categories:
+    gourmet: "Gourmet"
+    shopping: "Shopping"
+    experience: "Experience"
+    exhibition: "Exhibition"
+    onsen: "Onsen"
+    subculture: "Subculture"
+    sightseeing: "Sightseeing"
+
   my_events:
     title: "My Events"
     no_events: "You haven't posted any events yet."
@@ -209,6 +230,7 @@ en:
     catchphrase: "Catchphrase"
     bookmarks_count: "%{count} Bookmarks"
     no_events: "No events found."
+    tokyo: "Tokyo"
 
   viewed_history:
     title: "Viewing History"
@@ -262,3 +284,8 @@ en:
 
   errors:
     form_contains: "The form contains %{count} error(s)"
+
+  will_paginate:
+    previous_label: "Previous"
+    next_label: "Next"
+    page_label: "Page %{page}"

@@ -48,7 +48,7 @@ class EventsController < ApplicationController
 
     if @event.save
       flash[:success] = "Event created!"
-      redirect_to root_url
+      redirect_to my_events_path
     else
       render :new, status: :unprocessable_entity
     end

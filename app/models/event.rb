@@ -10,8 +10,8 @@ class Event < ApplicationRecord
   has_one_attached :image_1
   has_one_attached :image_2
 
-  AREA_OPTIONS = %w[渋谷 原宿 青山 広尾 松濤 池尻 恵比寿 代官山 中目黒 表参道].freeze
-  CATEGORY_OPTIONS = %w[グルメ ショッピング 体験 展覧会 温泉 サブカルチャー 観光・旅行].freeze
+  AREA_OPTIONS = %i[shibuya harajuku aoyama hiroo shoto ikejiri ebisu daikanyama nakameguro omotesando].freeze
+  CATEGORY_OPTIONS = %i[gourmet shopping experience exhibition onsen subculture sightseeing].freeze  
 
   # バリデーション
   validates :user_id, presence: true
@@ -21,9 +21,9 @@ class Event < ApplicationRecord
   validates :start_date, presence: true
   validates :end_date, presence: true
   validate :end_date_after_start_date
-  validates :area, presence: true, inclusion: { in: AREA_OPTIONS, message: 'は指定された地域から選択してください' }
+  validates :area, presence: true, inclusion: { in: AREA_OPTIONS.map(&:to_s), message: 'は指定された地域から選択してください' }
   validates :place, presence: true
-  validates :category, presence: true, inclusion: { in: CATEGORY_OPTIONS, message: 'は指定されたカテゴリから選択してください' }
+  validates :category, presence: true, inclusion: { in: CATEGORY_OPTIONS.map(&:to_s), message: 'は指定されたカテゴリから選択してください' }
   validates :contact, format: { with: /\A\d{10,11}\z/, message: 'は10〜11桁の数字で入力してください' }, allow_blank: true
   validates :cost, presence: true, numericality: { greater_than_or_equal_to: 0 }
   validates :link, format: { with: URI::DEFAULT_PARSER.make_regexp(%w[http https]), message: 'は有効なURLを入力してください' },

@@ -18,45 +18,59 @@
       <div class="col-md-4 col-sm-6 mb-4">
         <div class="card h-100">
           <div class="card-body">
-          <!-- エリアとブックマークボタン -->
-          <div class="d-flex justify-content-between align-items-center mb-2">
-            <span>東京都　<%= event.area %></span>
-            <% if current_user %>
-              <div class="bookmark-button-container">
-                <% if current_user.bookmarks.exists?(event: event) %>
-                  <%= button_to t('Index.bookmark_remove'), bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-sm btn-danger" %>
-                <% else %>
-                  <%= button_to t('Index.bookmark_add'), bookmarks_path(event_id: event.id), method: :post, class: "btn btn-sm btn-primary" %>
-                <% end %>
-              </div>
-            <% end %>
-          </div>
+            <!-- エリア＆ブックマークボタン -->
+            <div class="d-flex justify-content-between align-items-center mb-2">
+              <span><%= t('Index.tokyo') %> <%= t('areas.' + event.area) %></span>
+              <% if current_user %>
+                <div class="bookmark-button-container">
+                  <% if current_user.bookmarks.exists?(event: event) %>
+                    <%= button_to bookmark_path(current_user.bookmarks.find_by(event: event)), method: :delete, class: "btn btn-sm btn-danger" do %>
+                      <i class="glyphicon glyphicon-bookmark"></i>
+                    <% end %>
+                  <% else %>
+                    <%= button_to bookmarks_path(event_id: event.id), method: :post, class: "btn btn-sm btn-bookmark" do %>
+                      <i class="glyphicon glyphicon-bookmark"></i>
+                    <% end %>
+                  <% end %>
+                </div>
+              <% end %>
+            </div>
 
             <!-- タイトル -->
             <h5 class="card-title"><%= link_to event.title, event_path(event) %></h5>
-
+            
             <!-- 開始日 -->
             <p><i class="glyphicon glyphicon-time"></i> <%= event.start_date.strftime('%Y年%m月%d日') if event.start_date.present? %>〜</p>
-
+            
             <!-- サムネイル -->
             <% if event.thumbnail.present? %>
               <%= link_to event_path(event) do %>
-                <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+                <div class="thumbnail-container">
+                  <%= image_tag event.thumbnail, alt: event.title, class: "card-img-top" %>
+                </div>
               <% end %>
             <% else %>
               <%= link_to event_path(event) do %>
                 <div class="thumbnail-placeholder">No Thumbnail Available</div>
               <% end %>
             <% end %>
+
+            <!-- キャッチフレーズ -->
             <p><strong><%= event.catchphrase %></strong></p>
+            
+            <!-- ブックマーク数 -->
             <p><%= t('Index.bookmarks_count', count: event.bookmarks.count) %></p>
+            
+            <!-- その他の情報 -->
             <p class="single-line">
               <i class="glyphicon glyphicon-map-marker"></i> <%= event.place %>
             </p>
-            <p><i class="glyphicon glyphicon-road"></i> <%= event.station %></p>
+            <p>
+              <i class="glyphicon glyphicon-road"></i> <%= event.station %>
+            </p>
             <p>
               <i class="glyphicon glyphicon-tags"></i>
-              <%= link_to event.category, events_path(q: { category_eq: event.category }) %>
+              <%= link_to t("categories.#{event.category}"), events_path(q: { category_eq: event.category }) %>
             </p>
           </div>
         </div>

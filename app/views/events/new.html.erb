@@ -48,23 +48,17 @@
 
     <div class="form-group datetime-select">
       <%= form.label :start_date, t('event_form.start_date') %>
-      <div class="datetime-fields">
-        <%= form.date_select :start_date, { order: [:year, :month, :day] }, { class: "form-control" } %>
-        <%= form.time_select :start_date, { order: [:hour, :minute] }, { class: "form-control" } %>
-      </div>
+      <%= form.datetime_local_field :start_date, value: @event.start_date&.strftime('%Y-%m-%dT%H:%M'), class: "form-control" %>
     </div>
 
     <div class="form-group datetime-select">
       <%= form.label :end_date, t('event_form.end_date') %>
-      <div class="datetime-fields">
-        <%= form.date_select :end_date, { order: [:year, :month, :day] }, { class: "form-control" } %>
-        <%= form.time_select :end_date, { order: [:hour, :minute] }, { class: "form-control" } %>
-      </div>
+      <%= form.datetime_local_field :end_date, value: @event.end_date&.strftime('%Y-%m-%dT%H:%M'), class: "form-control" %>
     </div>
 
     <div class="form-group">
       <%= form.label :area, t('event_form.area') %>
-      <%= form.select :area, [['渋谷', '渋谷'], ['原宿', '原宿'], ['青山', '青山'], ['広尾', '広尾'], ['松濤', '松濤'], ['池尻', '池尻'], ['恵比寿', '恵比寿'], ['代官山', '代官山'], ['中目黒', '中目黒'], ['表参道', '表参道']], { prompt: t('event_form.prompt_select') }, class: "form-control" %>
+      <%= form.select :area, Event::AREA_OPTIONS.map { |area| [t("areas.#{area}"), area] }, { prompt: t('event_form.prompt_select') }, class: "form-control" %>
     </div>
 
     <div class="form-group">
@@ -79,7 +73,7 @@
 
     <div class="form-group">
       <%= form.label :category, t('event_form.category') %>
-      <%= form.select :category, [['グルメ', 'グルメ'], ['ショッピング', 'ショッピング'], ['体験', '体験'], ['展覧会', '展覧会'], ['温泉', '温泉'], ['サブカルチャー', 'サブカルチャー'], ['観光・旅行', '観光・旅行']], { prompt: t('event_form.prompt_select') }, class: "form-control" %>
+      <%= form.select :category, Event::CATEGORY_OPTIONS.map { |category| [t("categories.#{category}"), category] }, { prompt: t('event_form.prompt_select') }, class: "form-control" %>
     </div>
 
     <div class="form-group">

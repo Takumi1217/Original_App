@@ -31,7 +31,7 @@ ja:
       hiroo: "広尾"
       shootou: "松濤"
       ikejiri: "池尻"
-      ebbisu: "恵比寿"
+      ebisu: "恵比寿"
       daikanyama: "代官山"
       nakameguro: "中目黒"
       omotesando: "表参道"
@@ -42,7 +42,7 @@ ja:
       exhibition: "展覧会"
       onsen: "温泉"
       subculture: "サブカルチャー"
-      travel: "旅行"
+      sightseeing: "観光・旅行"
     when_links:
       today: "今日"
       tomorrow: "明日"
@@ -148,6 +148,27 @@ ja:
     placeholder_cost: "（半角数字）"
     placeholder_link: "（任意）"
 
+  areas:
+    shibuya: "渋谷"
+    harajuku: "原宿"
+    aoyama: "青山"
+    hiroo: "広尾"
+    shoto: "松濤"
+    ikejiri: "池尻"
+    ebisu: "恵比寿"
+    daikanyama: "代官山"
+    nakameguro: "中目黒"
+    omotesando: "表参道"
+
+  categories:
+    gourmet: "グルメ"
+    shopping: "ショッピング"
+    experience: "体験"
+    exhibition: "展覧会"
+    onsen: "温泉"
+    subculture: "サブカルチャー"
+    sightseeing: "観光・旅行"
+
   my_events:
     title: "自分のイベント"
     no_events: "まだイベントを投稿していません。"
@@ -209,6 +230,7 @@ ja:
     catchphrase: "キャッチフレーズ"
     bookmarks_count: "%{count} 件のブックマーク"
     no_events: "該当するイベントは見つかりませんでした。"
+    tokyo: "東京都"
 
   viewed_history:
     title: "閲覧履歴"
@@ -262,3 +284,8 @@ ja:
 
   errors:
     form_contains: "フォームに%{count}件のエラーがあります"
+
+  will_paginate:
+    previous_label: "前へ"
+    next_label: "次へ"
+    page_label: "ページ %{page}"

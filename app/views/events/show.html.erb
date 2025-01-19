@@ -1,12 +1,28 @@
-<h1><%= @event.title %></h1>
+<div class="d-flex align-items-center justify-content-between">
+  <h1><%= @event.title %></h1>
+  
+  <% if current_user %>
+    <div class="bookmark-button-container">
+      <% if current_user.bookmarks.exists?(event: @event) %>
+        <%= button_to bookmark_path(current_user.bookmarks.find_by(event: @event)), method: :delete, class: "btn btn-danger btn-sm" do %>
+          <i class="glyphicon glyphicon-bookmark"></i>
+        <% end %>
+      <% else %>
+        <%= button_to bookmarks_path(event_id: @event.id), method: :post, class: "btn btn-bookmark btn-sm" do %>
+          <i class="glyphicon glyphicon-bookmark"></i>
+        <% end %>
+      <% end %>
+    </div>
+  <% end %>
+</div>
 
 <div class="event-details">
   <p><i class="glyphicon glyphicon-time"></i> <%= @event.start_date.strftime('%Y/%m/%d') if @event.start_date.present? %>〜</p>
   <p><i class="glyphicon glyphicon-map-marker"></i> <%= @event.place %></p>
   <div class="d-flex">
     <p><i class="glyphicon glyphicon-road"></i> <%= @event.station %></p>
-    <p><i class="glyphicon glyphicon-globe"></i> <%= @event.area %></p>
-    <p><i class="glyphicon glyphicon-tags"></i> <%= @event.category %></p>
+    <p><i class="glyphicon glyphicon-globe"></i> <%= t("areas.#{@event.area}") %></p>
+    <p><i class="glyphicon glyphicon-tags"></i> <%= t("categories.#{@event.category}") %></p>
   </div>
 </div>
 

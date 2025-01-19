@@ -73,6 +73,13 @@
   </div>
   <ul class="offcanvas-mobile-list">
     <% if logged_in? %>
+      <li>
+        <% if I18n.locale == :ja %>
+          <%= link_to raw('<i class="glyphicon glyphicon-flag"></i> ') + "EN", url_for(locale: :en) %>
+        <% else %>
+          <%= link_to raw('<i class="glyphicon glyphicon-flag"></i> ') + "JA", url_for(locale: :ja) %>
+        <% end %>
+      </li>
       <li><%= link_to raw('<i class="glyphicon glyphicon-bell"></i> ') + t('header.notifications'), event_reminders_path %></li>
       <li><%= link_to raw('<i class="glyphicon glyphicon-user"></i> ') + t('header.profile'), current_user %></li>
       <li><%= link_to raw('<i class="glyphicon glyphicon-plus"></i> ') + t('header.post_event'), new_event_path %></li>

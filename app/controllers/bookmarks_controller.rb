@@ -12,7 +12,7 @@ class BookmarksController < ApplicationController
     else
       flash[:danger] = "Bookmarking failed."
     end
-    redirect_to events_path
+    redirect_back_or_to events_path
   end
 
   def destroy
@@ -20,12 +20,7 @@ class BookmarksController < ApplicationController
     @bookmark.destroy
     flash[:success] = "Removed the bookmark."
 
-    # リダイレクト先を判別
-    if request.referer.include?('bookmarks')
-      redirect_to bookmarks_path
-    else
-      redirect_to events_path
-    end
+    redirect_back_or_to events_path
   end
 
   private
@@ -35,5 +30,10 @@ class BookmarksController < ApplicationController
       flash[:danger] = "Please log in."
       redirect_to login_path
     end
+  end
+
+  # リダイレクト先をリファラから取得
+  def redirect_back_or_to(default)
+    redirect_to(request.referer || default)
   end
 end
