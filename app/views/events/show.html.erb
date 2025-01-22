@@ -86,7 +86,7 @@
   <div class="detail-row">
     <span class="detail-label"><%= t('show.event_period') %></span>
     <span class="detail-content">
-      <%= @event.start_date %> ～ <%= @event.end_date %>
+      <%= @event.start_date.strftime('%Y/%m/%d %H:%M') %> ～ <%= @event.end_date.strftime('%Y/%m/%d %H:%M') %>
     </span>
   </div>
 

@@ -5,6 +5,7 @@ en:
     notifications: "Notifications"
     all_notifications: "All Notifications"
     no_notifications: "No notifications"
+    reminders : "<strong>Reminder for %{title}</strong>"
     user: "User"
     profile: "Profile"
     post_event: "Post Event"
@@ -24,25 +25,6 @@ en:
     category: "Category"
     when: "When"
     price: "Price"
-    area_links:
-      shibuya: "Shibuya"
-      harajuku: "Harajuku"
-      aoyama: "Aoyama"
-      hiroo: "Hiroo"
-      shootou: "Shootou"
-      ikejiri: "Ikejiri"
-      ebisu: "Ebisu"
-      daikanyama: "Daikanyama"
-      nakameguro: "Nakameguro"
-      omotesando: "Omotesando"
-    category_links:
-      gourmet: "Gourmet"
-      shopping: "Shopping"
-      experience: "Experience"
-      exhibition: "Exhibition"
-      onsen: "Onsen"
-      subculture: "Subculture"
-      sightseeing: "Sightseeing"
     when_links:
       today: "Today"
       tomorrow: "Tomorrow"
@@ -93,6 +75,7 @@ en:
   event_reminders:
     title: "Event Notifications"
     no_reminders: "No reminders available"
+    notification: "Reminder for %{title}"
 
   profile:
     title: "Profile"
@@ -220,7 +203,8 @@ en:
     info_note: "※ The details might have changed. Please check the latest information on the official website or with the organizer."
 
   Index:
-    new_events: "New Events"
+    title: "Search"
+    search_event: "Event Search"
     search_placeholder: "Refine by keyword"
     search_button: "Search"
     sort_new: "Newest First"

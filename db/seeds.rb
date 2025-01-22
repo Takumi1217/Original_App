@@ -1,3 +1,5 @@
+Faker::Config.locale = 'en'
+
 # メインのサンプルユーザー
 user = User.create!(name:  "Example User",
                     email: "example@railstutorial.org",
@@ -8,7 +10,7 @@ user = User.create!(name:  "Example User",
                     activated_at: Time.zone.now)
 
 # 追加のユーザー
-99.times do |n|
+49.times do |n|
   name  = Faker::Name.name
   email = "example-#{n+1}@railstutorial.org"
   password = "password"
@@ -76,7 +78,7 @@ end
 # 各ユーザーがランダムにイベントをブックマーク
 events = Event.all
 User.find_each do |user|
-  rand(1..5).times do
+  rand(1..10).times do
     event = events.sample
     Bookmark.find_or_create_by!(user_id: user.id, event_id: event.id)
   end
@@ -85,8 +87,8 @@ end
 # お知らせのサンプルデータ
 10.times do |n|
   Notice.create!(
-    title: "#{n + 1}のお知らせ",
-    body: "これはお知らせの内容です。詳細情報がここに入ります。",
+    title: "Notice #{n + 1}",
+    body: "This is the content of the notice. Detailed information will be added here.",
     published_at: Faker::Time.backward(days: 30, period: :evening)
   )
 end
@@ -100,8 +102,8 @@ events = Event.all
   EventReminder.create!(
     user_id: user.id,
     event_id: event.id,
-    title: "#{event.title}の通知",
-    body: "#{event.title}が#{event.start_date.strftime('%Y年%m月%d日 %H:%M')}に開催されます。",
+    title: "#{event.title}",
+    body: "#{event.title} will be held on #{event.start_date.strftime('%Y-%m-%d %H:%M')}.",
     published_at: Faker::Time.backward(days: 10, period: :evening)
   )
 end

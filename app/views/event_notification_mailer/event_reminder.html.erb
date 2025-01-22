@@ -2,7 +2,7 @@
 <p><%= @event.title %> <%= t('reminder_email.event_is_tomorrow') %></p>
 <p><%= t('reminder_email.details') %>:</p>
 <ul>
-  <li><%= t('reminder_email.start_date') %>: <%= @event.start_date %></li>
+  <li><%= t('reminder_email.start_date') %>: <%= @event.start_date.strftime('%Y/%m/%d %H:%M') %></li>
   <li><%= t('reminder_email.place') %>: <%= @event.place %></li>
   <li><%= t('reminder_email.category') %>: <%= @event.category %></li>
   <li><%= t('reminder_email.link') %>: <%= @event.link %></li>

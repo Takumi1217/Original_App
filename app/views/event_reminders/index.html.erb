@@ -1,12 +1,14 @@
+<% provide(:title, t('event_reminders.title')) %>
+
 <h1><%= t('event_reminders.title') %></h1>
 <div class="center jumbotron">
   <% if @event_reminders.any? %>
     <ul>
       <% @event_reminders.each do |event_reminder| %>
         <li>
-          <h3><%= event_reminder.title %></h3>
+          <h3><%= t('event_reminders.notification', title: event_reminder.title) %></h3>
           <p><%= event_reminder.body %></p>
-          <p><%= event_reminder.published_at.strftime("%Y-%m-%d %H:%M:%S") %></p>
+          <p><%= event_reminder.published_at.strftime("%Y/%m/%d %H:%M") %></p>
         </li>
       <% end %>
     </ul>

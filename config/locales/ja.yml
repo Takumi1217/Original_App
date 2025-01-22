@@ -5,6 +5,7 @@ ja:
     notifications: "通知"
     all_notifications: "通知一覧"
     no_notifications: "通知はありません"
+    reminders : "<strong>%{title}</strong>の通知"
     user: "User"
     profile: "プロフィール"
     post_event: "イベントを投稿"
@@ -24,25 +25,6 @@ ja:
     category: "カテゴリ"
     when: "いつ"
     price: "値段"
-    area_links:
-      shibuya: "渋谷"
-      harajuku: "原宿"
-      aoyama: "青山"
-      hiroo: "広尾"
-      shootou: "松濤"
-      ikejiri: "池尻"
-      ebisu: "恵比寿"
-      daikanyama: "代官山"
-      nakameguro: "中目黒"
-      omotesando: "表参道"
-    category_links:
-      gourmet: "グルメ"
-      shopping: "ショッピング"
-      experience: "体験"
-      exhibition: "展覧会"
-      onsen: "温泉"
-      subculture: "サブカルチャー"
-      sightseeing: "観光・旅行"
     when_links:
       today: "今日"
       tomorrow: "明日"
@@ -93,6 +75,7 @@ ja:
   event_reminders:
     title: "イベント通知一覧"
     no_reminders: "通知はありません"
+    notification: "%{title}の通知"
 
   profile:
     title: "プロフィール"
@@ -220,7 +203,8 @@ ja:
     info_note: "※掲載内容が変更となっている場合があります。最新情報については、会場・主催者の公式サイト等でご確認ください。"
 
   Index:
-    new_events: "新着イベント"
+    title: "検索"
+    search_event: "イベント検索"
     search_placeholder: "キーワードから絞り込む"
     search_button: "検索"
     sort_new: "新しい順"

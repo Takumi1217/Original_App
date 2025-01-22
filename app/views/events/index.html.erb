@@ -1,4 +1,6 @@
-<h1><%= t('Index.new_events') %></h1>
+<% provide(:title, t('Index.title')) %>
+
+<h1><%= t('Index.search_event') %></h1>
 
 <%= search_form_for @q, url: events_path, method: :get, html: { class: "search-form" } do |f| %>
   <div class="form-inline">
@@ -40,7 +42,7 @@
             <h5 class="card-title"><%= link_to event.title, event_path(event) %></h5>
             
             <!-- 開始日 -->
-            <p><i class="glyphicon glyphicon-time"></i> <%= event.start_date.strftime('%Y年%m月%d日') if event.start_date.present? %>〜</p>
+            <p><i class="glyphicon glyphicon-time"></i> <%= event.start_date.strftime('%Y/%m/%d') if event.start_date.present? %>〜</p>
             
             <!-- サムネイル -->
             <% if event.thumbnail.present? %>

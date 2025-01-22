@@ -26,7 +26,7 @@
                   <li>
                     <%= link_to event_path(notification.event_id) do %>
                       <div>
-                        <strong><%= notification.title %></strong>
+                        <%= raw t('header.reminders', title: notification.title) %>
                         <p><%= notification.body %></p>
                         <small><%= notification.published_at.strftime('%Y/%m/%d %H:%M') if notification.published_at %></small>
                       </div>
